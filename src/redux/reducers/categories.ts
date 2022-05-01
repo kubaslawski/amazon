@@ -11,7 +11,7 @@ const initialState: ICategoriesInitialState = {
     errors: [] as Array<any>
 }
 
-export default function(state=initialState, action: any){
+export default function(state= initialState, action: any){
     switch(action.type){
         case GET_ALL_CATEGORIES: {
             return {
