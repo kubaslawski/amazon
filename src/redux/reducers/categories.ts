@@ -1,13 +1,19 @@
-import {GET_ALL_CATEGORIES} from "../types";
-import {ICategories} from "../../interfaces/categories";
+import {ADD_CATEGORY, GET_ALL_CATEGORIES} from "../types";
+import {ICategory, ISubCategory} from "../../interfaces/categories";
 
 interface ICategoriesInitialState {
-    categories: Array<ICategories>;
+    categories: Array<ICategory>;
+    category: ICategory;
     errors: Array<any>;
 }
 
 const initialState: ICategoriesInitialState = {
-    categories: [] as Array<ICategories>,
+    categories: [] as Array<ICategory>,
+    category: {
+        id: "",
+        name: "",
+        subCategories: [] as Array<ISubCategory>
+    },
     errors: [] as Array<any>
 }
 
@@ -17,6 +23,12 @@ export default function(state= initialState, action: any){
             return {
                 ...state,
                 categories: action.payload
+            }
+        }
+        case ADD_CATEGORY: {
+            return {
+                ...state,
+                categories: [...state.categories, action.payload]
             }
         }
         default: return state

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
     BrowserRouter as Router,
@@ -12,6 +11,10 @@ import {Provider} from "react-redux";
 import store from "./redux/store";
 // Pages
 import HomePage from "./app/pages/home";
+
+// Axios
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:5000/server-de7cd/europe-central2/api"
 
 
 function App() {

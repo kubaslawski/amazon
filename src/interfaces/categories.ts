@@ -1,10 +1,10 @@
-export interface ICategories {
-    id: string;
+export interface ICategory {
+    id?: string;
     name: string;
     subCategories: Array<ISubCategory>;
 }
 
 export interface ISubCategory {
-    id: string;
+    id?: string;
     name: string;
 }
