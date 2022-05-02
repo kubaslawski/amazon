@@ -7,22 +7,22 @@ interface IAInput {
     errors?: Array<string>;
     name?: string;
     onChange: (...args: any) => void;
-    placeholder?: string;
+    label?: string;
     type?: string;
-    value: TValue;
+    value: any;
 }
 
 const AInput: React.FC<IAInput> = ({
    errors,
    name,
    onChange,
-   placeholder,
+   label,
    type = "text",
    value,
 }) => {
     return (
         <div className="a__input">
-            <h5>{placeholder}</h5>
+            <h5 className="a__input--label">{label}</h5>
             <input
                 className="a__input--input"
                 value={value}
