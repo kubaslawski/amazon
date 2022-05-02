@@ -2,13 +2,14 @@ import React, {useCallback, useState} from "react";
 // redux
 import {addCategory} from "../../redux/actions/categories";
 import {useAppDispatch} from "../hooks/useAppDispatch";
-import {ISubCategory} from "../../interfaces/categories";
+// interfaces
+import {ICategory, ISubCategory} from "../../interfaces/categories";
 
 
 const HomePage = () => {
     const dispatch = useAppDispatch();
     
-    const [category, setCategory] = useState({
+    const [category, setCategory] = useState<ICategory>({
         name: '',
         subCategories: [] as Array<ISubCategory>,
     });
