@@ -14,29 +14,24 @@ import HomePage from "./app/pages/home";
 
 // Axios
 import axios from "axios";
+
 axios.defaults.baseURL = "http://localhost:5000/server-de7cd/europe-central2/api"
 
 
 function App() {
     
     return (
-        <Provider store={store}>
-            <Router>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <Switch>
-                    <Route path="/">
-                        <HomePage/>
-                    </Route>
-                </Switch>
-            </Router>
-        </Provider>
-    
+        <div className="app">
+            <Provider store={store}>
+                <Router>
+                    <Switch>
+                        <Route path="/">
+                            <HomePage/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </Provider>
+        </div>
     );
 }
 
