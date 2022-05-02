@@ -1,0 +1,27 @@
+@import "./scss/variables.scss";
+
+a {
+    color: $white;
+    text-decoration: none;
+}
+
+button:hover, img:hover {
+    cursor: pointer;
+}
+
+.blue {
+    color: $blue;
+}
+
+.black {
+    color: $black;
+}
+
+
+// global
+.span__error {
+   color: #ff3b00;
+   font-weight: 700;
+   font-size: 0.8rem;
+   text-align: center;
+}
