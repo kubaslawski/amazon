@@ -1,0 +1,30 @@
+@import "variables";
+.flex {
+  display: flex;
+}
+.image__container {
+  margin: auto 5px;
+}
+.global__navbar--link {
+  margin: auto 5px;
+  background: transparent;
+  color: $white;
+  border: none;
+  font-size: 1rem;
+  padding: 5px;
+
+  &:hover {
+    cursor: pointer;
+    outline: $standard-outline;
+  }
+
+  > a {
+    font-size: 1rem;
+  }
+}
+
+.global__amazon--logo {
+  width: 100px;
+  object-fit: contain;
+  margin: 18px 20px 0 20px;
+}

@@ -22,7 +22,7 @@ const AInput: React.FC<IAInput> = ({
 }) => {
     return (
         <div className="a__input">
-            <h5 className="a__input--label">{label}</h5>
+            {label && (<h5 className="a__input--label">{label}</h5>)}
             <input
                 className="a__input--input"
                 value={value}

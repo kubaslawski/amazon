@@ -1,0 +1,20 @@
+@import "../../../scss/variables";
+
+.ASearchBar__container {
+  display: flex;
+  > .a__input > .a__input--input {
+    border: none;
+    &:focus-visible {
+      border: none;
+    }
+  }
+}
+.searchIcon__container {
+  width: 40px;
+  background-color: $search-icon-background;
+  > img {
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+}
