@@ -1,0 +1,36 @@
+@import "../../../scss/variables";
+
+.secondHeader__container {
+  color: $white;
+  background-color: $charcoal;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  padding: 0 20px;
+  place-content: space-between;
+
+  > .secondHeader__navbar {
+    display: flex;
+    > .secondHeader__navbar--link {
+      margin: auto 5px;
+      background: transparent;
+      color: $white;
+      border: none;
+      font-size: 1rem;
+      padding: 5px;
+
+      &:hover {
+        outline: 1px solid $white;
+      }
+
+      > a {
+        font-size: 1.1rem;
+      }
+
+    }
+  }
+}
+
