@@ -11,7 +11,7 @@ import cart from "../../images/shopping-cart-white.png";
 // components
 import ASearchBar from "../../reusable-components/ASearchBar/ASearchBar";
 import ADropdown from "../../reusable-components/ADropdown/ADropdown";
-
+import UserPanel from "./user-panel/user-panel";
 
 const optionList = ["option1", "option2", "option3", "option4"];
 
@@ -20,7 +20,9 @@ const Header = () => {
     const [searchInputValue, setSearchInputValue] = useState<string>("");
     const onSearchInputChange = (event: any) => {
         setSearchInputValue(event.target.value);
-    }
+    };
+    
+    const [isUserPanelOpen, setIsUserPanelOpen] = useState<boolean>(true);
     
     return (
         <div className="header__container">
@@ -51,24 +53,22 @@ const Header = () => {
                     <img className="flag-image" src={polishFlag} alt="your country"/>
                     <img className="dropdown-image" src={dropdown} alt="dropdown"/>
                 </div>
-    
-                <div className="global__navbar--link flex login-panel">
-                    <span>Hello, Sign In <br/> <b>Account & List</b></span>
-                    <img className="dropdown-image" src={dropdown} alt="dropdown"/>
-                </div>
-    
+                
+                <UserPanel/>
+                
+                
                 <div className="global__navbar--link flex">
                     <span>Returns <br/> <b>& Orders</b> </span>
                 </div>
-    
+                
                 <div className="global__navbar--link flex basket-panel">
                     <span className="basket-items"><b>5</b></span>
                     <img className="basket" src={cart} alt="your basket"/>
                     <span className="basket-panel__span"><b>Cart</b></span>
                 </div>
             </div>
-            
-            
+        
+        
         </div>
     )
 }
