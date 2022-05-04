@@ -4,17 +4,10 @@ import AButton from "../../../reusable-components/AButton/AButton";
 import {Link} from "react-router-dom";
 import dropdown from "../../../images/dropdown-grey.png";
 
-interface IUserPanel {
-
-}
-
-const UserPanel: React.FC<IUserPanel> = () => {
+const UserPanel: React.FC = () => {
     
     const [open, setOpen] = useState<boolean>(false);
     const handleOpen = () => {setOpen(!open)};
-    const onClickOutsideListener = () => {
-        setOpen(false);
-    }
     
     return (
         <>
