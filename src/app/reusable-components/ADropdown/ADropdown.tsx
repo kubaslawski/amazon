@@ -4,7 +4,6 @@ import "./ADropdown.scss";
 import dropdown from "../../images/dropdown-grey.png";
 import ListDisplay from "./helpers/list-display/ListDisplay";
 
-
 interface IADropdown {
     optionList: Array<string>;
 }
