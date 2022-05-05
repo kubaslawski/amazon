@@ -5,16 +5,16 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 // Redux
 import {Provider} from "react-redux";
 import store from "./redux/store";
 // Pages
-import HomePage from "./app/pages/home";
-
+import HomePage from "./app/components/navbar/navbar";
+import ProductPage from "./app/pages/product/product";
 // Axios
 import axios from "axios";
+import Navbar from "./app/components/navbar/navbar";
 
 axios.defaults.baseURL = "http://localhost:5000/server-de7cd/europe-central2/api"
 
@@ -25,10 +25,9 @@ function App() {
         <div className="app">
             <Provider store={store}>
                 <Router>
+                    <Navbar/>
                     <Switch>
-                        <Route path="/">
-                            <HomePage/>
-                        </Route>
+                        <Route path="/" component={ProductPage}/>
                     </Switch>
                 </Router>
             </Provider>

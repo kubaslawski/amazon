@@ -27,6 +27,9 @@ const SecondHeader: React.FC = () => {
                 <div className="global__navbar--link ">
                     <Link to="/">Sell</Link>
                 </div>
+                <div className="global__navbar--link">
+                    <Link to="/product">Add Product</Link>
+                </div>
             </div>
             <div className="secondHeader__navbar">
                 <div className="global__navbar--link ">
