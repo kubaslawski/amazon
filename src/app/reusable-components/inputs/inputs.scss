@@ -1,0 +1,23 @@
+@import "../../../scss/variables";
+
+.a__file-input {
+  margin-top: 15px;
+  > .file-input {
+    > .a__button {
+      margin-top: 15px;
+    }
+  }
+}
+.a__input--input {
+  height: 30px;
+  background-color: $white;
+  border: 1px solid $black;
+  outline: none;
+  &:focus-visible {
+    border: 1px solid $black;
+  }
+}
+.a__input--label {
+  margin: 0 0 2px 0;
+  font-size: 0.8rem;
+}

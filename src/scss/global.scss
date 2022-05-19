@@ -20,8 +20,10 @@
     outline: $standard-outline;
   }
 
-  > a {
+  > .link {
     font-size: 1rem;
+    color: $white;
+    text-decoration: none;
   }
 }
 
@@ -29,4 +31,11 @@
   width: 100px;
   object-fit: contain;
   margin: 18px 20px 0 20px;
+}
+
+.span-error {
+  color: #ff3b00;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: center;
 }

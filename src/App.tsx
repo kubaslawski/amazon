@@ -15,6 +15,8 @@ import ProductPage from "./app/pages/product/product";
 // Axios
 import axios from "axios";
 import Navbar from "./app/components/navbar/navbar";
+// react-bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 axios.defaults.baseURL = "http://localhost:5000/server-de7cd/europe-central2/api"
 

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./ASearchBar.scss";
-import AInput from "../AInput/AInput.";
+import AInput from "../inputs/AInput/AInput.";
 import searchIcon from "../../images/search-black.png";
 
 interface IASearchBar {

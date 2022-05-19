@@ -1,9 +1,7 @@
 import React from "react";
-import './AInput.scss';
+import '../inputs.scss';
 
-type TValue = "string" | "number";
-
-interface IAInput {
+export interface IAInput {
     errors?: Array<string>;
     name?: string;
     onChange: (...args: any) => void;
@@ -29,12 +27,13 @@ const AInput: React.FC<IAInput> = ({
                 name={name}
                 type={type}
                 onChange={onChange}
+                min="1"
             />
             {errors && errors.length > 0 &&
             errors.map((error, index) => {
                 return (
                     <>
-                        <span key={index} className="span_error">
+                        <span key={index} className="span-error">
                             {error}
                         </span>
                         <br/>

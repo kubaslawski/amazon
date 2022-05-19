@@ -10,30 +10,30 @@ const SecondHeader: React.FC = () => {
             <div className="secondHeader__navbar">
                 <div className="global__navbar--link">
                     <img src={menu} alt="menu" className="secondHeader__container--menu-image"/>
-                    <Link to="/">All</Link>
+                    <Link className="link" to="/">All</Link>
                 </div>
                 <div className="global__navbar--link ">
-                    <Link to="/">Today's Deals</Link>
+                    <Link className="link" to="/">Today's Deals</Link>
                 </div>
                 <div className="global__navbar--link ">
-                    <Link to="/">Customer Service</Link>
+                    <Link className="link" to="/">Customer Service</Link>
                 </div>
                 <div className="global__navbar--link ">
-                    <Link to="/">Registry</Link>
+                    <Link className="link" to="/">Registry</Link>
                 </div>
                 <div className="global__navbar--link ">
-                    <Link to="/">Gift Cards</Link>
+                    <Link className="link" to="/">Gift Cards</Link>
                 </div>
                 <div className="global__navbar--link ">
-                    <Link to="/">Sell</Link>
+                    <Link className="link" to="/">Sell</Link>
                 </div>
                 <div className="global__navbar--link">
-                    <Link to="/product">Add Product</Link>
+                    <Link className="link" to="/product">Add Product</Link>
                 </div>
             </div>
             <div className="secondHeader__navbar">
                 <div className="global__navbar--link ">
-                    <Link to="/">Shop All Deals</Link>
+                    <Link className="link" to="/">Shop All Deals</Link>
                 </div>
             </div>
         </div>
