@@ -18,7 +18,7 @@ import Navbar from "./app/components/navbar/navbar";
 // react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-axios.defaults.baseURL = "http://localhost:5000/server-de7cd/europe-central2/api"
+axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
 
 function App() {

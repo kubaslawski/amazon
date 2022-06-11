@@ -1,7 +1,8 @@
 import React from "react";
 import "./product.scss";
 // forms
-import AddProduct from "../../forms/addProduct";
+import AddProduct from "../../forms/addProduct/addProduct";
+
 
 const ProductPage: React.FC = () => {
     return (
