@@ -1,3 +1,8 @@
 export interface IDispatchInterface {
-    (arg0: any): void;
+    (...args: any): void;
+}
+
+export interface IOption {
+    label: string;
+    value: string | number;
 }

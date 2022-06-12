@@ -3,17 +3,12 @@ import {ICategory, ISubCategory} from "../../interfaces/categories";
 
 interface ICategoriesInitialState {
     categories: Array<ICategory>;
-    category: ICategory;
+    category?: ICategory;
     errors: Array<any>;
 }
 
 const initialState: ICategoriesInitialState = {
     categories: [] as Array<ICategory>,
-    category: {
-        id: "",
-        name: "",
-        subCategories: [] as Array<ISubCategory>
-    },
     errors: [] as Array<any>
 }
 
@@ -34,3 +29,4 @@ export default function(state= initialState, action: any){
         default: return state
     }
 }
+

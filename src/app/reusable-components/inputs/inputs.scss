@@ -17,3 +17,15 @@
   margin: 0 0 2px 0;
   font-size: 0.8rem;
 }
+
+.a__select-input {
+  > select {
+    height: 30px;
+    background-color: $white;
+    border: 1px solid $black;
+    outline: none;
+    &:focus-visible {
+      border: 1px solid $black;
+    }
+  }
+}
