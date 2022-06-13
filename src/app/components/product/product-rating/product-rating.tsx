@@ -3,7 +3,6 @@ import "./product-rating.scss";
 // icons
 import fullStar from '../../../../icons/full-star.png';
 import emptyStar from '../../../../icons/empty-star.png';
-import halfStar from '../../../../icons/empty-star.png';
 // interfaces
 import {IProductRate} from "../../../../interfaces/products";
 
@@ -16,18 +15,17 @@ const ProductRating: React.FC<IProductRating> = ({rate}) => {
     const {avg_rate, rate_count} = rate;
 
     const fullStarsLen = Math.round(avg_rate);
-    const halfStarsLen = avg_rate - fullStarsLen;
     const emptyStarsLen = 5 - fullStarsLen;
 
     const fullStars = [...Array(fullStarsLen)].map((e, i) => {
         return (
-            <img className='star-image' src={fullStar} alt='star'/>
+            <img key={`full-star rating ${i}`} className='star-image' src={fullStar} alt='star'/>
         )
     })
 
     const emptyStars = [...Array(emptyStarsLen)].map((e, i) => {
         return (
-            <img className='star-image' src={emptyStar} alt='star'/>
+            <img key={`empty-star rating ${i}`} className='star-image' src={emptyStar} alt='star'/>
         )
     })
 
@@ -45,8 +43,6 @@ const ProductRating: React.FC<IProductRating> = ({rate}) => {
             ) : (
                 <p className='no-rate'>No opinion yet</p>
             )}
-
-
         </div>
     )
 }

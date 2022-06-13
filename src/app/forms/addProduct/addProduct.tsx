@@ -1,10 +1,8 @@
-import React, {useState, useCallback, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./addProduct.scss";
-
 // ext libraries
 import axios from "axios";
-
 // components
 import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
@@ -31,7 +29,7 @@ const AddProduct: React.FC = () => {
 
     useEffect(() => {
         dispatch(getAllCategories());
-    }, [])
+    }, [dispatch])
 
     const handleChange = (event: any) => {
         setProductData({
@@ -49,7 +47,6 @@ const AddProduct: React.FC = () => {
     }
 
     const handleSubmit = () => {
-        const data = new FormData();
         axios.post('/products/', productData, {
             headers: {
                 "Content-type": "multipart/form-data"
@@ -78,7 +75,7 @@ const AddProduct: React.FC = () => {
             </div>
             {img && (
                 <div className="col-7">
-                    <img src={img} alt="image-preview"/>
+                    <img src={img} alt="preview"/>
                 </div>
             )}
         </div>
