@@ -1,16 +1,18 @@
 import {GET_ALL_PRODUCTS} from "../types";
+import {IProduct} from "../../interfaces/products";
+import {IAction} from "../../interfaces/global";
 
 interface IProductsInitialState {
-    products: any;
+    products: Array<IProduct>;
     errors: Array<any>;
 }
 
 const initialState: IProductsInitialState = {
-    products: [] as Array<any>,
+    products: [] as Array<IProduct>,
     errors: [] as Array<any>
 }
 
-export default function(state= initialState, action: any){
+export default function(state= initialState, action: IAction){
     switch(action.type){
         case GET_ALL_PRODUCTS: {
             return {

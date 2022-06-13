@@ -1,5 +1,6 @@
 import {ADD_CATEGORY, GET_ALL_CATEGORIES} from "../types";
-import {ICategory, ISubCategory} from "../../interfaces/categories";
+import {ICategory} from "../../interfaces/categories";
+import {IAction} from "../../interfaces/global";
 
 interface ICategoriesInitialState {
     categories: Array<ICategory>;
@@ -12,7 +13,7 @@ const initialState: ICategoriesInitialState = {
     errors: [] as Array<any>
 }
 
-export default function(state= initialState, action: any){
+export default function(state= initialState, action: IAction){
     switch(action.type){
         case GET_ALL_CATEGORIES: {
             return {
