@@ -1,7 +1,7 @@
 import {ISeller} from "./users";
 import {IOption} from "./global";
 
-export interface IProductRating {
+export interface IProductRate {
     avg_rate: number;
     rate_count: number;
 }
@@ -15,5 +15,5 @@ export interface IProduct {
     stock: number;
     price: number;
     photo: string;
-    product_rating: IProductRating;
+    product_rating: IProductRate;
 }

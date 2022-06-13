@@ -1,0 +1,19 @@
+@import "../../../../scss/variables";
+
+.product-rating {
+  display: flex;
+  > .rate-count {
+    color: $rating;
+    font-weight: 600;
+    margin: auto 0 auto 5px;
+  }
+  > .star-image {
+    width: 20px;
+    margin-right: 2px;
+  }
+  > .no-rate {
+    color: $rating;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}

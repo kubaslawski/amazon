@@ -11,7 +11,7 @@ import {Provider} from "react-redux";
 import store from "./redux/store";
 // Pages
 import HomePage from "./app/components/navbar/navbar";
-import ProductPage from "./app/pages/product/product";
+import ProductPage from "./app/pages/product-page/product-page";
 // Axios
 import axios from "axios";
 import Navbar from "./app/components/navbar/navbar";
