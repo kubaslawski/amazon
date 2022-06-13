@@ -8,7 +8,6 @@ import {ICategory} from "../../interfaces/categories";
 export const getAllCategories = () => (dispatch: IDispatchInterface) => {
     axios.get('/categories/')
         .then((res) => {
-            console.log(res.data)
             dispatch({
                 type: GET_ALL_CATEGORIES,
                 payload: res.data
