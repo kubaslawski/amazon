@@ -4,12 +4,16 @@ import {IAction} from "../../interfaces/global";
 
 interface ICategoriesInitialState {
     categories: Array<ICategory>;
-    category?: ICategory;
+    category: ICategory;
     errors: Array<any>;
 }
 
 const initialState: ICategoriesInitialState = {
     categories: [] as Array<ICategory>,
+    category: {
+        value: '',
+        label: ''
+    },
     errors: [] as Array<any>
 }
 
