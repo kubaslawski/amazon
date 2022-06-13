@@ -28,12 +28,12 @@ const SecondHeader: React.FC = () => {
                     <Link className="link" to="/">Sell</Link>
                 </div>
                 <div className="global__navbar--link">
-                    <Link className="link" to="/product">Add Product</Link>
+                    <Link className="link" to="/add-product">Add Product</Link>
                 </div>
             </div>
             <div className="secondHeader__navbar">
                 <div className="global__navbar--link ">
-                    <Link className="link" to="/">Shop All Deals</Link>
+                    <Link className="link" to="/products">Shop All Deals</Link>
                 </div>
             </div>
         </div>
