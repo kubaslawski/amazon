@@ -29,7 +29,7 @@ function App() {
                 <Router>
                     <Navbar/>
                     <Switch>
-                        <Route path="/" component={ProductPage}/>
+                        <Route path="/products" component={ProductPage}/>
                     </Switch>
                 </Router>
             </Provider>
