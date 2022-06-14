@@ -1,4 +1,4 @@
-import {GET_ALL_PRODUCTS} from "../types";
+import {ADD_PRODUCT, GET_ALL_PRODUCTS} from "../types";
 import {IProduct} from "../../interfaces/products";
 import {IAction} from "../../interfaces/global";
 
@@ -18,6 +18,12 @@ export default function(state= initialState, action: IAction){
             return {
                 ...state,
                 products: action.payload
+            }
+        }
+        case ADD_PRODUCT: {
+            return {
+                ...state,
+                products: [...state.products, action.payload]
             }
         }
         default: return state

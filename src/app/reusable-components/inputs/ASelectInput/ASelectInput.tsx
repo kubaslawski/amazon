@@ -17,7 +17,7 @@ errors, label,  name, onChange, options
     return (
         <div className="a__select-input">
             {label && (<h5 className="a__input--label">{label}</h5>)}
-            <select>
+            <select name={name} onChange={onChange}>
                 {options.map((obj: IOption) => {
                     return (
                         <option key={obj.value} value={obj.value}>

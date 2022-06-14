@@ -22,7 +22,6 @@ const AddProduct: React.FC = () => {
         description: "",
         stock: "0",
         price: "0",
-        subCategory: "",
         photo: ""
     });
     const [img, setImg] = useState("");
@@ -56,9 +55,6 @@ const AddProduct: React.FC = () => {
             .catch((err) => console.error(err))
     }
 
-    const handleSelectChange = (e: any) => {
-        console.log(e)
-    }
 
     return (
         <div className="row">
@@ -69,7 +65,7 @@ const AddProduct: React.FC = () => {
                 <AInput label="description" name="description" onChange={handleChange} value={productData.description}/>
                 <AInput label="price" name="price" type="number" onChange={handleChange} value={productData.price}/>
                 <AInput label="stock" name="stock" type="number" onChange={handleChange} value={productData.stock}/>
-                <ASelectInput onChange={handleSelectChange} options={categories} label="category"/>
+                <ASelectInput name='category' onChange={handleChange} options={categories} label="category"/>
                 <APhotoInput name="photo" label="photo" onPhotoChange={handleImageChange}/>
                 <AButton text="Submit" onClick={handleSubmit} className="add-product__button"/>
             </div>
