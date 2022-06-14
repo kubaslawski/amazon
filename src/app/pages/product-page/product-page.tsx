@@ -24,7 +24,7 @@ const ProductPage: React.FC = () => {
             dispatch(getProduct(id));
         }
         return () => {};
-    }, [id])
+    }, [id, dispatch])
 
     return (
         <div className='product-page'>

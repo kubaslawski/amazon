@@ -22,7 +22,7 @@ const ProductCard: React.FC<IProductCard> = ({product}) => {
                 pathname: `/product/${id}`
             }}>
                 <div className='product-image'>
-                    <img src={photo}/>
+                    <img src={photo} alt='product'/>
                 </div>
                 <div className='product-details'>
                     <p>{name}</p>
