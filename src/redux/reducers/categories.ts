@@ -2,7 +2,7 @@ import {ADD_CATEGORY, GET_ALL_CATEGORIES} from "../types";
 import {ICategory} from "../../interfaces/categories";
 import {IAction} from "../../interfaces/global";
 
-interface ICategoriesInitialState {
+export interface ICategoriesInitialState {
     categories: Array<ICategory>;
     category: ICategory;
     errors: Array<any>;

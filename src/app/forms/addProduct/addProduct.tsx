@@ -29,7 +29,7 @@ const AddProduct: React.FC = () => {
         photo: ""
     });
     const [img, setImg] = useState("");
-    console.log(productData);
+
     useEffect(() => {
         dispatch(getAllCategories());
     }, [dispatch])

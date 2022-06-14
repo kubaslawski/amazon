@@ -1,26 +1,47 @@
-import React, {useEffect} from "react";
+import React, {useEffect} from 'react';
+import './product-page.scss';
 import {useDispatch, useSelector} from "react-redux";
-import "./product-page.scss";
-import {getAllProducts} from "../../../redux/actions/products";
-// page components
-import ProductCard from "../../components/product/product-card/product-card";
+import {Link, useParams} from "react-router-dom";
+// actions
+import {getProduct} from "../../../redux/actions/products";
 // interfaces
-import {IProduct} from "../../../interfaces/products";
 import {IDispatchInterface} from "../../../interfaces/global";
 
 const ProductPage: React.FC = () => {
+
+    const params = useParams();
+    const id = params['id'];
+
     const dispatch: IDispatchInterface = useDispatch();
-    const products = useSelector((state: any) => state.products.products);
+    const product = useSelector((state: any) => state.products.product);
+
+    console.log(product);
 
     useEffect(() => {
-        dispatch(getAllProducts())
-    }, [dispatch])
+        if (id) {
+            dispatch(getProduct(id));
+        }
+        return () => {};
+    }, [id])
 
     return (
-        <div className="product-page row">
-            {products.map((product: IProduct) => {
-                return <ProductCard key={product.id} product={product}/>
-            })}
+        <div className='product-page'>
+            {product && (
+                <span className='product-line'>
+                    <Link to={{
+                        pathname: `/category/${product.category.value}`
+                    }}>
+                        {product.category.label}
+                    </Link>
+                        {' -> '}
+                    <Link to={{
+                        pathname: `/product/${product.id}`
+                    }}>
+                        {product.name}
+                    </Link>
+
+                </span>
+            )}
         </div>
     )
 }

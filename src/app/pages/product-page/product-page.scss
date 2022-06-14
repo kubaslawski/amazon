@@ -1,3 +1,17 @@
+@import "../../../scss/variables";
+
 .product-page {
-  margin: auto 2% !important;
+  margin: 10px 2%;
+  > .product-line {
+    > a {
+      color: $rating;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+    > a:hover {
+      text-decoration: underline;
+    }
+
+  }
 }
