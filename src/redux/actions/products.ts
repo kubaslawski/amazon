@@ -1,8 +1,8 @@
 import {ADD_PRODUCT, GET_ALL_PRODUCTS} from "../types";
 import axios from "axios";
+// interfaces
 import {IDispatchInterface} from "../../interfaces/global";
-import {IProduct} from "../../interfaces/products";
-
+import {IAddProduct} from "../../interfaces/products";
 
 export const getAllProducts = () => (dispatch: IDispatchInterface) => {
     axios.get('/products/')
@@ -15,4 +15,22 @@ export const getAllProducts = () => (dispatch: IDispatchInterface) => {
         .catch((err) => {
             console.log(err)
         })
+}
+
+export const addProduct = (productData: IAddProduct) => (dispatch: IDispatchInterface) => {
+    axios.post('/products/', productData, {
+        headers: {
+            "Content-type": "multipart/form-data"
+        }
+    })
+        .then((res) => {
+            dispatch({
+                type: ADD_PRODUCT,
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
 }

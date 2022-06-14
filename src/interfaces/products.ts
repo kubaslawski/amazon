@@ -6,6 +6,16 @@ export interface IProductRate {
     rate_count: number;
 }
 
+export interface IAddProduct {
+    category: string;
+    seller: string;
+    name: string;
+    description: string;
+    stock: string;
+    price: string;
+    photo: string;
+}
+
 export interface IProduct {
     id: number;
     seller: ISeller;

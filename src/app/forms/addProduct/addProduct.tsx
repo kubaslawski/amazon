@@ -7,15 +7,19 @@ import axios from "axios";
 import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
 import APhotoInput from "../../reusable-components/inputs/AFileInput/AFileInput";
-import {getAllCategories} from "../../../redux/actions/categories";
-import {IDispatchInterface} from "../../../interfaces/global";
 import ASelectInput from "../../reusable-components/inputs/ASelectInput/ASelectInput";
+// actions
+import {getAllCategories} from "../../../redux/actions/categories";
+import {addProduct} from "../../../redux/actions/products";
+// interfaces
+import {IDispatchInterface} from "../../../interfaces/global";
+import {IAddProduct} from "../../../interfaces/products";
 
 const AddProduct: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const categories = useSelector((state: any) => state.categories.categories)
-    const [productData, setProductData] = useState({
+    const [productData, setProductData] = useState<IAddProduct>({
         category: "1",
         seller: "1",
         name: "",
@@ -25,7 +29,7 @@ const AddProduct: React.FC = () => {
         photo: ""
     });
     const [img, setImg] = useState("");
-
+    console.log(productData);
     useEffect(() => {
         dispatch(getAllCategories());
     }, [dispatch])
@@ -46,13 +50,7 @@ const AddProduct: React.FC = () => {
     }
 
     const handleSubmit = () => {
-        axios.post('/products/', productData, {
-            headers: {
-                "Content-type": "multipart/form-data"
-            }
-        })
-            .then((res) => console.log(res))
-            .catch((err) => console.error(err))
+        dispatch(addProduct(productData));
     }
 
 
