@@ -12,10 +12,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // pages
 import ProductsPage from "./app/pages/products-page/products-page";
 import AddProductPage from "./app/pages/add-product/add-product";
+import ProductPage from "./app/pages/product-page/product-page";
 // components
 import Header from "./app/components/header/header";
 import SecondHeader from "./app/components/second-header/second-header";
-import ProductPage from "./app/pages/product-page/product-page";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
@@ -40,6 +40,10 @@ function App() {
                         <Route
                             path="/product/:id"
                             element={<ProductPage/>}
+                        />
+                        <Route
+                            path="/category/:id"
+                            element={<ProductsPage/>}
                         />
                     </Routes>
                 </Provider>

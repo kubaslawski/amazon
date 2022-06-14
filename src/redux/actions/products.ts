@@ -17,6 +17,17 @@ export const getAllProducts = () => (dispatch: IDispatchInterface) => {
         })
 }
 
+export const getCategoryProducts = (categoryId: string) => (dispatch: IDispatchInterface) => {
+    axios.get(`/products/category/${categoryId}/`)
+        .then((res) => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err))
+}
+
 export const getProduct = (id: string) => (dispatch: IDispatchInterface) => {
     axios.get(`/products/${id}/`)
         .then((res) => {

@@ -1,7 +1,9 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./products-page.scss";
-import {getAllProducts} from "../../../redux/actions/products";
+import {useParams} from "react-router-dom";
+// actions
+import {getAllProducts, getCategoryProducts} from "../../../redux/actions/products";
 // page components
 import ProductCard from "../../components/product/product-card/product-card";
 // interfaces
@@ -10,10 +12,17 @@ import {IDispatchInterface} from "../../../interfaces/global";
 
 const ProductsPage: React.FC = () => {
     const dispatch: IDispatchInterface = useDispatch();
+    const params = useParams();
     const products = useSelector((state: any) => state.products.products);
 
+    const {id} = params;
+
     useEffect(() => {
-        dispatch(getAllProducts())
+        if(id){
+            dispatch(getCategoryProducts(id));
+        } else {
+            dispatch(getAllProducts());
+        }
     }, [dispatch])
 
     return (
