@@ -37,7 +37,7 @@ const ProductRating: React.FC<IProductRating> = ({rate}) => {
                     {fullStars}
                     {emptyStars}
                     <p className='rate-count'>
-                        {rate_count}
+                        Rate count: {rate_count}
                     </p>
                 </>
             ) : (

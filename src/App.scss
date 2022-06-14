@@ -26,4 +26,8 @@ button:hover, img:hover {
 }
 
 
-// global
+// global styles
+.section {
+    padding-bottom: 5px;
+    border-bottom: $standard-section-bottom-border;
+}

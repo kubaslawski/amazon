@@ -6,6 +6,7 @@ import {Link, useParams} from "react-router-dom";
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
+import ProductRating from "../../components/product/product-rating/product-rating";
 
 const ProductPage: React.FC = () => {
 
@@ -27,20 +28,46 @@ const ProductPage: React.FC = () => {
     return (
         <div className='product-page'>
             {product && (
-                <span className='product-line'>
+                <>
+                 <span className='product-line'>
                     <Link to={{
                         pathname: `/category/${product.category.value}`
                     }}>
                         {product.category.label}
                     </Link>
-                        {' -> '}
-                    <Link to={{
-                        pathname: `/product/${product.id}`
-                    }}>
+                     {' -> '}
+                     <Link to={{
+                         pathname: `/product/${product.id}`
+                     }}>
                         {product.name}
                     </Link>
 
                 </span>
+                <div className='row'>
+                    <div className='col-1'/>
+                    <div className='col-10 product-details'>
+                        <div className='row'>
+                            <div className='product-image col-5'>
+                                <img src={product.photo} alt='product-preview'/>
+                            </div>
+                            <div className='product-details col-3'>
+                                <div className='section'>
+                                    <p>{product.name}</p>
+                                    <ProductRating rate={product.product_rating}/>
+                                </div>
+                                <div className='section'>
+                                    <p>{product.description}</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className='col-1'/>
+                </div>
+
+                </>
             )}
         </div>
     )
