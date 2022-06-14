@@ -4,6 +4,7 @@ export const ADD_CATEGORY = "ADD_CATEGORY";
 
 // products
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_PRODUCT = "GET_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 
 // users

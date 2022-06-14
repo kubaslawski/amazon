@@ -1,7 +1,7 @@
 import {combineReducers, applyMiddleware, compose, createStore} from "redux";
 import thunk from 'redux-thunk';
-import categoriesReducer from './reducers/categories';
-import productsReducer from './reducers/products';
+import categoriesReducer, {ICategoriesInitialState} from './reducers/categories';
+import productsReducer, {IProductsInitialState} from './reducers/products';
 
 const initialState = {};
 
@@ -12,6 +12,10 @@ const reducers = combineReducers({
     products: productsReducer
 })
 
+export interface IState {
+    categories: ICategoriesInitialState,
+    products: IProductsInitialState
+}
 
 const store = createStore(
     reducers,

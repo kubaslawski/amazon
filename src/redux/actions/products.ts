@@ -1,4 +1,4 @@
-import {ADD_PRODUCT, GET_ALL_PRODUCTS} from "../types";
+import {ADD_PRODUCT, GET_ALL_PRODUCTS, GET_PRODUCT} from "../types";
 import axios from "axios";
 // interfaces
 import {IDispatchInterface} from "../../interfaces/global";
@@ -10,10 +10,23 @@ export const getAllProducts = () => (dispatch: IDispatchInterface) => {
             dispatch({
                 type: GET_ALL_PRODUCTS,
                 payload: res.data
-            })
+            });
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err);
+        })
+}
+
+export const getProduct = (id: string) => (dispatch: IDispatchInterface) => {
+    axios.get(`/products/${id}/`)
+        .then((res) => {
+            dispatch({
+                type: GET_PRODUCT,
+                payload: res.data
+            });
+        })
+        .catch((err) => {
+            console.log(err);
         })
 }
 
@@ -27,7 +40,7 @@ export const addProduct = (productData: IAddProduct) => (dispatch: IDispatchInte
             dispatch({
                 type: ADD_PRODUCT,
                 payload: res.data
-            })
+            });
         })
         .catch((err) => {
             console.log(err);
