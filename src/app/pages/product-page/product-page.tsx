@@ -7,6 +7,7 @@ import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 import ProductRating from "../../components/product/product-rating/product-rating";
+import ProductDelivery from "../../components/delivery/product-delivery/product-delivery";
 
 const ProductPage: React.FC = () => {
 
@@ -58,9 +59,11 @@ const ProductPage: React.FC = () => {
                                 <div className='section'>
                                     <p>{product.description}</p>
                                 </div>
-
                             </div>
-
+                            <ProductDelivery
+                                price={product.price}
+                                stock={product.stock}
+                            />
                         </div>
 
                     </div>
