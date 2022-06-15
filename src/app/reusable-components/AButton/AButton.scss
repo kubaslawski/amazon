@@ -1,6 +1,6 @@
 @import "../../../scss/variables.scss";
 
-.a_button {
+.a__button {
   margin-top: 20px;
   margin-right: 5%;
   width: 100%;
@@ -17,7 +17,6 @@
 .transparent {
   border: 1px solid $button-transparent-border;
   color: $black;
-  width: 100%;
   height: 30px;
   border-radius: 2px;
 }

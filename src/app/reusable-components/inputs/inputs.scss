@@ -6,16 +6,33 @@
 }
 .a__input--input {
   height: 30px;
+  padding: 0 5px;
+  font-size: 13px;
+  line-height: 19px;
+}
+.normal-input {
   background-color: $white;
   border: 1px solid $black;
   outline: none;
+}
+.transparent-input {
+  border: $grey-strong-border;
+  border-radius: 3px;
   &:focus-visible {
-    border: 1px solid $black;
+    border: none !important;
+    outline: 1px solid  #e77600;
+  }
+  &:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
   }
 }
+
 .a__input--label {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 19px;
   margin: 0 0 2px 0;
-  font-size: 0.8rem;
 }
 
 .a__select-input {

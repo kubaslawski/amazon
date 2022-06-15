@@ -16,6 +16,7 @@ import ProductPage from "./app/pages/product-page/product-page";
 // components
 import Header from "./app/components/header/header";
 import SecondHeader from "./app/components/second-header/second-header";
+import RegisterPage from "./app/pages/register-page/register-page";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
@@ -44,6 +45,10 @@ function App() {
                         <Route
                             path="/category/:id"
                             element={<ProductsPage/>}
+                        />
+                        <Route
+                            path="/register"
+                            element={<RegisterPage/>}
                         />
                     </Routes>
                 </Provider>

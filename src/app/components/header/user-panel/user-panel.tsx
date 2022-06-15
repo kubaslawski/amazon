@@ -12,15 +12,20 @@ const UserPanel: React.FC = () => {
     return (
         <>
             <div className="global__navbar--link login-panel" onClick={handleOpen}>
-                <span>Hello, Sign In <br/> <b>Account & List</b></span>
+                    <span>Hello, Sign In <br/> <b>Account & List</b></span>
                 <img className="dropdown-image" src={dropdown} alt="dropdown"/>
             </div>
             {open && (
                 <div className="user-panel">
                     <div className="user-panel__top">
-                        <AButton text="Sign in"/>
+                        <Link to={{
+                            pathname: '/login'
+                        }}
+                        >
+                            <AButton className='user-panel__login-button' text="Sign in"/>
+                        </Link>
                         <br/>
-                        <small>New customer? <Link to="/">Start here.</Link></small>
+                        <small>New customer? <Link to="/register">Start here.</Link></small>
                     </div>
                     <div className="user-panel__bottom">
                         <div className="user-panel__left">

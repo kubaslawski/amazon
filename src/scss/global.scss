@@ -39,3 +39,28 @@
   font-size: 0.8rem;
   text-align: center;
 }
+
+// buttons
+.global__form--submitButton {
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  &:hover {
+    background: #f0c14b;
+  }
+  &:active {
+    border-color: #a88734 #9c7e31 #9c7e31;
+  }
+  &:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+  }
+}
+
+
+// forms
+.globa__afterForm--hint {
+  margin-top: 10px;
+  font-size: 12px;
+  > a {
+    padding-left: 5px;
+  }
+}
