@@ -7,17 +7,16 @@ import amazonLogo from '../../../icons/amazon-logo.svg';
 // components
 import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
-
+// interfaces
+import {ICreateUser} from "../../../interfaces/users";
 
 const RegisterPage: React.FC = () => {
 
-    const [userData, setUserData] = useState({
-        username: '',
+    const [userData, setUserData] = useState<ICreateUser>({
         email: '',
         password: '',
         confirmPassword: '',
     })
-
 
     const handleChange = (event: any) => {
         setUserData({
@@ -25,6 +24,11 @@ const RegisterPage: React.FC = () => {
             [event.target.name]: event.target.value
         })
     };
+
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+    };
+
 
     return (
         <div className='register-page row'>
@@ -41,15 +45,10 @@ const RegisterPage: React.FC = () => {
                     <p className='register-title'>
                         Create an account
                     </p>
-                    <form className='register-form'>
-                        <AInput
-                            label='Username'
-                            name='username'
-                            onChange={handleChange}
-                            placeholder='Your username'
-                            value={userData.username}
-                            variant={'transparent'}
-                        />
+                    <form
+                        onSubmit={handleSubmit}
+                        noValidate={true}
+                        className='register-form'>
                         <AInput
                             label='Email Address'
                             name='email'
@@ -62,6 +61,7 @@ const RegisterPage: React.FC = () => {
                             name='password'
                             onChange={handleChange}
                             placeholder={'At least 6 characters'}
+                            type='password'
                             value={userData.password}
                             variant={'transparent'}
                         />
@@ -69,6 +69,7 @@ const RegisterPage: React.FC = () => {
                             label='Confirm Password'
                             name='confirmPassword'
                             onChange={handleChange}
+                            type='password'
                             value={userData.confirmPassword}
                             variant={'transparent'}
                         />
