@@ -6,7 +6,7 @@ import {
 } from "../types";
 import {IAction} from "../../interfaces/global";
 
-interface IUIInitialState {
+export interface IUIInitialState {
     loading: boolean;
     errors: unknown;
 }

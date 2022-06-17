@@ -2,6 +2,7 @@ import {combineReducers, applyMiddleware, compose, createStore} from "redux";
 import thunk from 'redux-thunk';
 import categoriesReducer, {ICategoriesInitialState} from './reducers/categories';
 import productsReducer, {IProductsInitialState} from './reducers/products';
+import uiReducer, {IUIInitialState} from "./reducers/ui";
 
 const initialState = {};
 
@@ -9,12 +10,14 @@ const middleware = [thunk];
 
 const reducers = combineReducers({
     categories: categoriesReducer,
-    products: productsReducer
+    products: productsReducer,
+    ui: uiReducer
 })
 
 export interface IState {
     categories: ICategoriesInitialState,
-    products: IProductsInitialState
+    products: IProductsInitialState,
+    ui: IUIInitialState
 }
 
 const store = createStore(
