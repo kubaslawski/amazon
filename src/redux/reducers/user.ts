@@ -5,7 +5,7 @@ import {
 } from "../types";
 import {IAction} from "../../interfaces/global";
 
-interface IUsersInitialState {
+export interface IUsersInitialState {
     authenticated: boolean;
     credentials: unknown;
 }
