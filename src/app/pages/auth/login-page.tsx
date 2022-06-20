@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import './auth.scss';
 // ext libraries
+import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
 // icons
 import amazonLogo from '../../../icons/amazon-logo.svg';
@@ -9,9 +11,15 @@ import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
 // interfaces
 import {IAuth} from "../../../interfaces/users";
+// actions
+import {loginUser} from "../../../redux/actions/user";
+import {IDispatchInterface} from "../../../interfaces/global";
 
 const LoginPage: React.FC = () => {
 
+    const dispatch: IDispatchInterface = useDispatch();
+    const navigate = useNavigate();
+    const errors = useSelector((state: any) => state.ui.errors)
     const [userData, setUserData] = useState<IAuth>({
         email: '',
         password: '',
@@ -26,8 +34,8 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+        dispatch(loginUser(userData, navigate));
     };
-
 
     return (
         <>
@@ -50,6 +58,7 @@ const LoginPage: React.FC = () => {
                             noValidate={true}
                             className='auth-form--login'>
                             <AInput
+                                errors={errors?.email}
                                 label='Email Address'
                                 name='email'
                                 onChange={handleChange}
@@ -57,6 +66,7 @@ const LoginPage: React.FC = () => {
                                 variant={'transparent'}
                             />
                             <AInput
+                                errors={errors?.password}
                                 label='Password'
                                 name='password'
                                 onChange={handleChange}
@@ -70,6 +80,9 @@ const LoginPage: React.FC = () => {
                                 variant='transparent'
                             />
                         </form>
+                        <span className={'span-error'}>
+                            {errors?.detail}
+                        </span>
                     </div>
                 </div>
                 <div className='col-4'></div>

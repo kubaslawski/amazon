@@ -7,13 +7,15 @@ import {
 import {IAction} from "../../interfaces/global";
 
 export interface IUIInitialState {
-    loading: boolean;
     errors: unknown;
+    loading: boolean;
+    message: string;
 }
 
 const initialState: IUIInitialState = {
     loading: false,
-    errors: null
+    errors: null,
+    message: ''
 }
 
 export default function(state: IUIInitialState = initialState, action: IAction){

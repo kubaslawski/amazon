@@ -5,8 +5,9 @@ import {Routes, Route, BrowserRouter as Router} from "react-router-dom";
 // Redux
 import {Provider} from "react-redux";
 import store from "./redux/store";
-// Axios
+// externals
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 // react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 // pages
@@ -18,6 +19,16 @@ import Header from "./app/components/header/header";
 import SecondHeader from "./app/components/second-header/second-header";
 import RegisterPage from "./app/pages/auth/register-page";
 import LoginPage from "./app/pages/auth/login-page";
+
+
+const token = localStorage.getItem('token');
+if(token){
+    const decodedToken:any = jwtDecode(token);
+    if(decodedToken.exp * 1000 < Date.now()){
+    } else {
+        axios.defaults.headers.common['Authorization'] = token;
+    }
+}
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
