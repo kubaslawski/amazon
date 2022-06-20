@@ -11,6 +11,7 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const SET_USER = "SET_USER";
 export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";
+export const LOADING_USER = "LOADING_USER";
 
 // ui
 export const SET_ERRORS = "SET_ERRORS";

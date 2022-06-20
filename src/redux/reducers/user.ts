@@ -1,23 +1,30 @@
 import {
     SET_USER,
     SET_AUTHENTICATED,
-    SET_UNAUTHENTICATED
+    SET_UNAUTHENTICATED, LOADING_USER
 } from "../types";
 import {IAction} from "../../interfaces/global";
 
 export interface IUsersInitialState {
     authenticated: boolean;
     credentials: unknown;
+    loading: boolean;
 }
 
 
 const initialState = {
     authenticated: false,
-    credentials: {}
+    credentials: {},
+    loading: false
 };
 
-export default function (state: IUsersInitialState=initialState, action: IAction){
+export default function (state: IUsersInitialState=initialState, action: any){
     switch(action.type){
+        case LOADING_USER:
+            return {
+                ...state,
+                loading: true
+            }
         case SET_AUTHENTICATED:
             return {
                 ...state,
@@ -28,10 +35,9 @@ export default function (state: IUsersInitialState=initialState, action: IAction
         case SET_USER:
             return {
                 authenticated: true,
+                loading: false,
                 ...action.payload
             }
         default: return state
     }
-
-
 }

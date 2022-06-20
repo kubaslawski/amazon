@@ -6,6 +6,7 @@ import {Link, useParams} from "react-router-dom";
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
+// components
 import ProductRating from "../../components/product/product-rating/product-rating";
 import ProductDelivery from "../../components/delivery/product-delivery/product-delivery";
 
@@ -17,14 +18,13 @@ const ProductPage: React.FC = () => {
     const dispatch: IDispatchInterface = useDispatch();
     const product = useSelector((state: any) => state.products.product);
 
-    console.log(product);
-
     useEffect(() => {
         if (id) {
             dispatch(getProduct(id));
         }
         return () => {};
     }, [id, dispatch])
+
 
     return (
         <div className='product-page'>

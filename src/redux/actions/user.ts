@@ -2,7 +2,10 @@ import {
     SET_USER,
     SET_AUTHENTICATED,
     SET_UNAUTHENTICATED,
-    LOADING_UI, SET_ERRORS
+    LOADING_UI,
+    SET_ERRORS,
+    CLEAR_ERRORS,
+    LOADING_USER
 } from "../types";
 // external libraries
 import axios from 'axios';
@@ -15,7 +18,8 @@ export const loginUser = (userData: IAuth, navigate:any) => (dispatch: IDispatch
     axios.post('/token/', userData)
         .then((res) => {
             setAuthorizationToken(res.data.access);
-            navigate('/products')
+            dispatch({type: CLEAR_ERRORS});
+            navigate('/products');
         })
         .catch((err) =>
             dispatch({
@@ -29,4 +33,18 @@ const setAuthorizationToken = (token:string) => {
     const bearerToken = `Bearer ${token}`
     localStorage.setItem('token', bearerToken);
     axios.defaults.headers.common['Authorization'] = bearerToken;
+}
+
+export const getUserData = () => (dispatch: any) => {
+    dispatch({
+        type: LOADING_USER
+    })
+    axios.get(`/user/`)
+        .then((res) => {
+            dispatch({
+                type: SET_USER,
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err));
 }
