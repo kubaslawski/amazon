@@ -1,0 +1,91 @@
+@import '../../../scss/variables';
+
+.auth-panel__container {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  > .global__amazon--logo--container {
+    text-align: center;
+    > .global__amazon--logo {
+      width: 200px;
+    }
+  }
+  > .auth-panel {
+    border: $grey-border;
+    padding: 20px;
+    > .auth-title {
+      font-size: 24px;
+      font-weight: 400;
+    }
+    > .auth-form--login {
+      > .a__input {
+        margin-top: 15px;
+        > .a__input--input {
+          width: 100%;
+        }
+      }
+    }
+    > .auth-form {
+      padding-bottom: 20px;
+      border-bottom: $grey-border;
+      > .a__input {
+        margin-top: 15px;
+        > .a__input--input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.divider {
+  text-align: center;
+  position: relative;
+  top: 2px;
+  padding-top: 15px;
+  margin-bottom: 14px;
+  line-height: 0;
+  > .h5-dividerBreak {
+    line-height: 1;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 400;
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+    background-color: $pure-white;
+    padding: 0 8px 0 7px;
+  }
+  &:after {
+    content: "";
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    height: 1px;
+    border-top: $grey-border;
+    position: absolute;
+    top: 12%;
+    margin-top: -1px;
+    z-index: 1;
+  }
+}
+
+.button-login {
+  background: linear-gradient(to bottom,#e7eaf0,#d9dce1);
+  border-radius: 3px;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none!important;
+  vertical-align: middle;
+  &:focus {
+    outline: 0;
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+  }
+  &:hover {
+    border-color: #a2a6ac #979aa1 #82858a;
+  }
+}

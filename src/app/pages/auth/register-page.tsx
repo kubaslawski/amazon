@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './register-page.scss';
+import './auth.scss';
 // ext libraries
 import {Link} from "react-router-dom";
 // icons
@@ -33,7 +33,7 @@ const RegisterPage: React.FC = () => {
     return (
         <div className='register-page row'>
             <div className='col-4'></div>
-            <div className='col-4 register-panel__container'>
+            <div className='col-4 auth-panel__container'>
                 <div className='global__amazon--logo--container'>
                     <img
                         className="global__amazon--logo"
@@ -41,14 +41,14 @@ const RegisterPage: React.FC = () => {
                         alt="amazong--logo"
                     />
                 </div>
-                <div className='register-panel'>
-                    <p className='register-title'>
+                <div className='auth-panel'>
+                    <p className='auth-title'>
                         Create an account
                     </p>
                     <form
                         onSubmit={handleSubmit}
                         noValidate={true}
-                        className='register-form'>
+                        className='auth-form'>
                         <AInput
                             label='Email Address'
                             name='email'
