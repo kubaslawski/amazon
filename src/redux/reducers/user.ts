@@ -3,7 +3,6 @@ import {
     SET_AUTHENTICATED,
     SET_UNAUTHENTICATED, LOADING_USER
 } from "../types";
-import {IAction} from "../../interfaces/global";
 
 export interface IUsersInitialState {
     authenticated: boolean;
@@ -36,7 +35,7 @@ export default function (state: IUsersInitialState=initialState, action: any){
             return {
                 authenticated: true,
                 loading: false,
-                ...action.payload
+                credentials: action.payload
             }
         default: return state
     }

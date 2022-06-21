@@ -1,22 +1,41 @@
 import React, { useState } from "react";
+import {useSelector} from "react-redux";
 import "./user-panel.scss"
-import AButton from "../../../reusable-components/AButton/AButton";
+// ext.
 import {Link} from "react-router-dom";
+// components
+import AButton from "../../../reusable-components/AButton/AButton";
+// icons/images
 import dropdown from "../../../images/dropdown-grey.png";
+import close from "../../../../icons/cancel.png";
 
 const UserPanel: React.FC = () => {
-    
+
+    const user = useSelector((state: any) => state.user);
+    const {first_name, last_name} = user.credentials;
     const [open, setOpen] = useState<boolean>(false);
     const handleOpen = () => {setOpen(!open)};
-    
+
+
     return (
         <>
             <div className="global__navbar--link login-panel" onClick={handleOpen}>
-                    <span>Hello, Sign In <br/> <b>Account & List</b></span>
+                {user.authenticated ? (
+                    <span>Hello {first_name} {last_name} <br/> <b>Account & List</b></span>
+                ) : (
+                    <span>Hello, Sign In <br/></span>
+                )}
+
                 <img className="dropdown-image" src={dropdown} alt="dropdown"/>
             </div>
             {open && (
                 <div className="user-panel">
+                    <img
+                        className={'close-icon'}
+                        src={close}
+                        alt={'close'}
+                        onClick={() => setOpen(false)}
+                    />
                     <div className="user-panel__top">
                         <Link to={{
                             pathname: '/login'

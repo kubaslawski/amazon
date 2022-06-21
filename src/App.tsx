@@ -3,7 +3,7 @@ import './App.scss';
 import "./scss/global.scss";
 import {Routes, Route, BrowserRouter as Router} from "react-router-dom";
 // Redux
-import {Provider, useDispatch, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import store from "./redux/store";
 // externals
 import axios from "axios";
@@ -22,9 +22,9 @@ import LoginPage from "./app/pages/auth/login-page";
 // actions
 import {getUserData} from "./redux/actions/user";
 // interfaces
-import {IDispatchInterface} from "./interfaces/global";
 import {SET_AUTHENTICATED} from "./redux/types";
 
+axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
 const token = localStorage.getItem('token');
 if(token){
@@ -39,7 +39,7 @@ if(token){
     }
 }
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
+
 
 
 function App() {
@@ -47,9 +47,10 @@ function App() {
     return (
         <Router>
             <div className="app">
-                <Header/>
-                <SecondHeader/>
+
                 <Provider store={store}>
+                    <Header/>
+                    <SecondHeader/>
                     <Routes>
                         <Route
                             path="/products"

@@ -9,6 +9,12 @@
   z-index: 5;
   top: 50px;
   right: 100px;
+  > .close-icon {
+    width: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
   > .user-panel__top {
     text-align: center;
     height: 80px;

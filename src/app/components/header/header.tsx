@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import './header.scss';
 import "../../../scss/global.scss";
 // components
@@ -13,17 +13,17 @@ import ASearchBar from "../../reusable-components/ASearchBar/ASearchBar";
 import ADropdown from "../../reusable-components/ADropdown/ADropdown";
 import UserPanel from "./user-panel/user-panel";
 
+
 const optionList = ["option1", "option2", "option3", "option4"];
 
 const Header = () => {
-    
+
+
     const [searchInputValue, setSearchInputValue] = useState<string>("");
     const onSearchInputChange = (event: any) => {
         setSearchInputValue(event.target.value);
     };
-    
-    const [isUserPanelOpen, setIsUserPanelOpen] = useState<boolean>(true);
-    
+
     return (
         <div className="header__container">
             <div className="left-panel">

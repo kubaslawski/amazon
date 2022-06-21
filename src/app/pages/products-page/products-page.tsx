@@ -11,6 +11,7 @@ import {IProduct} from "../../../interfaces/products";
 import {IDispatchInterface} from "../../../interfaces/global";
 
 const ProductsPage: React.FC = () => {
+
     const dispatch: IDispatchInterface = useDispatch();
     const params = useParams();
     const products = useSelector((state: any) => state.products.products);
@@ -23,7 +24,7 @@ const ProductsPage: React.FC = () => {
         } else {
             dispatch(getAllProducts());
         }
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <div className="products-page row">

@@ -1,7 +1,5 @@
 import {
     SET_USER,
-    SET_AUTHENTICATED,
-    SET_UNAUTHENTICATED,
     LOADING_UI,
     SET_ERRORS,
     CLEAR_ERRORS,
@@ -39,7 +37,7 @@ export const getUserData = () => (dispatch: any) => {
     dispatch({
         type: LOADING_USER
     })
-    axios.get(`/user/`)
+    axios.get(`/token/verify_user/`)
         .then((res) => {
             dispatch({
                 type: SET_USER,
