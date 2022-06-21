@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import "./user-panel.scss"
 // ext.
 import {Link} from "react-router-dom";
@@ -8,13 +8,24 @@ import AButton from "../../../reusable-components/AButton/AButton";
 // icons/images
 import dropdown from "../../../images/dropdown-grey.png";
 import close from "../../../../icons/cancel.png";
+// interfaces
+import {IDispatchInterface} from "../../../../interfaces/global";
+// actions
+import {logoutUser} from "../../../../redux/actions/user";
 
 const UserPanel: React.FC = () => {
 
+    const dispatch: IDispatchInterface = useDispatch();
     const user = useSelector((state: any) => state.user);
+
     const {first_name, last_name} = user.credentials;
+
     const [open, setOpen] = useState<boolean>(false);
-    const handleOpen = () => {setOpen(!open)};
+
+    const handleOpen = () => {setOpen(prevState => !prevState)};
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    }
 
 
     return (
@@ -37,14 +48,21 @@ const UserPanel: React.FC = () => {
                         onClick={() => setOpen(false)}
                     />
                     <div className="user-panel__top">
-                        <Link to={{
-                            pathname: '/login'
-                        }}
-                        >
-                            <AButton className='user-panel__login-button' text="Sign in"/>
-                        </Link>
-                        <br/>
-                        <small>New customer? <Link to="/register">Start here.</Link></small>
+                        {user.authenticated ? (
+                            <>
+                                <Link to={{pathname: '/login'}}>
+                                    <AButton className='user-panel__login-button' text={'Logout'} onClick={handleLogout}/>
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to={{pathname: '/login'}}>
+                                    <AButton className='user-panel__login-button' text="Sign in"/>
+                                </Link>
+                                <br/>
+                                <small>New customer? <Link to="/register">Start here.</Link></small>
+                            </>
+                        )}
                     </div>
                     <div className="user-panel__bottom">
                         <div className="user-panel__left">

@@ -3,7 +3,7 @@ import {
     LOADING_UI,
     SET_ERRORS,
     CLEAR_ERRORS,
-    LOADING_USER
+    LOADING_USER, SET_UNAUTHENTICATED
 } from "../types";
 // external libraries
 import axios from 'axios';
@@ -25,6 +25,12 @@ export const loginUser = (userData: IAuth, navigate:any) => (dispatch: IDispatch
                 payload: err.response.data
             })
         )
+}
+
+export const logoutUser = () => (dispatch: IDispatchInterface) => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    dispatch({type: SET_UNAUTHENTICATED})
 }
 
 const setAuthorizationToken = (token:string) => {

@@ -1,7 +1,8 @@
 import {
+    LOADING_USER,
     SET_USER,
     SET_AUTHENTICATED,
-    SET_UNAUTHENTICATED, LOADING_USER
+    SET_UNAUTHENTICATED,
 } from "../types";
 
 export interface IUsersInitialState {
