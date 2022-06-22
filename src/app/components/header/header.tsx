@@ -26,7 +26,6 @@ const Header = () => {
     const [itemCount, setItemCount] = useState(0);
     const checkBasket = () => {
         const basket = JSON.parse(localStorage.getItem('basket') || '[]');
-
         if(basket.length < 1){
             setItemCount(0);
         } else {
