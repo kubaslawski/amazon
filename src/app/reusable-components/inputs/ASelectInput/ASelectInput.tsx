@@ -32,6 +32,17 @@ const ASelectInput: React.FC<IASelectInput> = ({
                     )
                 })}
             </select>
+            {errors && errors.length > 0 &&
+                errors.map((error, index) => {
+                    return (
+                        <>
+                        <span key={index} className="span-error">
+                            {error}
+                        </span>
+                            <br/>
+                        </>
+                    );
+                })}
         </div>
     )
 }
