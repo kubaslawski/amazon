@@ -12,11 +12,9 @@ import {IProduct} from "../../../../interfaces/products";
 // functions
 import {addToBasket} from "../../../functions/add-to-basket";
 
-
 interface IProductDelivery {
     product: IProduct
 }
-
 
 const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
 
@@ -36,7 +34,6 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
     const handleAddToBasket = () => {
         addToBasket(product.id, quantity);
     }
-
 
     return (
         <div className='col-4 product-delivery'>

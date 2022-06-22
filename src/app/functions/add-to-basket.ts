@@ -16,4 +16,5 @@ export const addToBasket = (productId: number, quantity: number) => {
         let newBasket = [...basket, productDetails];
         localStorage.setItem('basket', JSON.stringify(newBasket));
     }
+    window.dispatchEvent(new Event('storage'));
 }
