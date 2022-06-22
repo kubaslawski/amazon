@@ -9,6 +9,8 @@ import location from '../../../../icons/location.png';
 import lock from '../../../../icons/lock.png';
 // interfaces
 import {IProduct} from "../../../../interfaces/products";
+// functions
+import {addToBasket} from "../../../functions/add-to-basket";
 
 
 interface IProductDelivery {
@@ -19,6 +21,7 @@ interface IProductDelivery {
 const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
 
     const {stock, price} = product;
+
     const options = Array.from(Array(stock).keys()).map((obj) => {
         return {
             value: obj,
@@ -27,10 +30,13 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
     })
     const [quantity, setQuantity] = useState<number>(1);
 
-    const handleChange = () => {};
+    const handleChange = (e: any) => {
+        setQuantity(parseInt(e.target.value));
+    };
     const handleAddToBasket = () => {
-
+        addToBasket(product.id, quantity);
     }
+
 
     return (
         <div className='col-4 product-delivery'>
