@@ -24,7 +24,7 @@ const ProductsPage: React.FC = () => {
         } else {
             dispatch(getAllProducts());
         }
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     return (
         <div className="products-page row">

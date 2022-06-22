@@ -1,14 +1,17 @@
 import React, {useEffect} from 'react';
 import './product-page.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 // actions
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 // components
-import ProductRating from "../../components/product/product-rating/product-rating";
-import ProductDelivery from "../../components/delivery/product-delivery/product-delivery";
+import ProductDelivery from "./helpers/product-delivery";
+import ProductHeader from "./helpers/product-header";
+import ProductDetails from "./helpers/product-details";
+import {IProduct} from "../../../interfaces/products";
+import ProductImage from "./helpers/product-image";
 
 const ProductPage: React.FC = () => {
 
@@ -16,62 +19,35 @@ const ProductPage: React.FC = () => {
     const id = params['id'];
 
     const dispatch: IDispatchInterface = useDispatch();
-    const product = useSelector((state: any) => state.products.product);
+    const product: IProduct = useSelector((state: any) => state.products.product);
 
     useEffect(() => {
         if (id) {
             dispatch(getProduct(id));
         }
-        return () => {};
+        return () => {
+        };
     }, [id, dispatch])
 
 
     return (
         <div className='product-page'>
-            {product && (
-                <>
-                 <span className='product-line'>
-                    <Link to={{
-                        pathname: `/category/${product.category.value}`
-                    }}>
-                        {product.category.label}
-                    </Link>
-                     {' -> '}
-                     <Link to={{
-                         pathname: `/product/${product.id}`
-                     }}>
-                        {product.name}
-                    </Link>
-
-                </span>
-                <div className='row'>
-                    <div className='col-1'/>
-                    <div className='col-10 product-details'>
+                {product && (
+                    <>
+                        <ProductHeader product={product}/>
                         <div className='row'>
-                            <div className='product-image col-5'>
-                                <img src={product.photo} alt='product-preview'/>
-                            </div>
-                            <div className='product-details col-3'>
-                                <div className='section'>
-                                    <p>{product.name}</p>
-                                    <ProductRating rate={product.product_rating}/>
-                                </div>
-                                <div className='section'>
-                                    <p>{product.description}</p>
+                            <div className='col-1'/>
+                            <div className='col-10 product-details'>
+                                <div className='row'>
+                                    <ProductImage photo={product.photo}/>
+                                    <ProductDetails product={product}/>
+                                    <ProductDelivery product={product}/>
                                 </div>
                             </div>
-                            <ProductDelivery
-                                price={product.price}
-                                stock={product.stock}
-                            />
+                            <div className='col-1'/>
                         </div>
-
-                    </div>
-                    <div className='col-1'/>
-                </div>
-
-                </>
-            )}
+                    </>
+                )}
         </div>
     )
 }

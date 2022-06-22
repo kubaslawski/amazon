@@ -1,31 +1,39 @@
-import React from "react";
-import './product-delivery.scss'
+import React, {useState} from "react";
+import './helpers.scss';
 // components
-import ProductPrice from "../../product/product-price/product-price";
+import ProductPrice from "../../../components/product/product-price/product-price";
 import ASelectInput from "../../../reusable-components/inputs/ASelectInput/ASelectInput";
 import AButton from "../../../reusable-components/AButton/AButton";
 // icons
 import location from '../../../../icons/location.png';
 import lock from '../../../../icons/lock.png';
+// interfaces
+import {IProduct} from "../../../../interfaces/products";
+
 
 interface IProductDelivery {
-    price: number;
-    stock: number;
+    product: IProduct
 }
 
-const ProductDelivery: React.FC<IProductDelivery> = ({price, stock}) => {
 
-    const handleChange = () => {};
+const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
+
+    const {stock, price} = product;
     const options = Array.from(Array(stock).keys()).map((obj) => {
         return {
             value: obj,
             label: obj.toString()
         }
     })
+    const [quantity, setQuantity] = useState<number>(1);
+
+    const handleChange = () => {};
+    const handleAddToBasket = () => {
+
+    }
 
     return (
         <div className='col-4 product-delivery'>
-            Product Delivery
             <ProductPrice price={price}/>
             <p className='delivery-time'>
                 <span className='delivery-time__1'>
@@ -50,6 +58,7 @@ const ProductDelivery: React.FC<IProductDelivery> = ({price, stock}) => {
             <div className='delivery-quantity'>
                 <span>Quantity: </span>
                 <ASelectInput
+                    value={quantity}
                     onChange={handleChange}
                     options={options}
                     label=''
@@ -60,6 +69,7 @@ const ProductDelivery: React.FC<IProductDelivery> = ({price, stock}) => {
                     text='Add to basket'
                     variant={"transparent"}
                     className='add-to-basket-button'
+                    onClick={handleAddToBasket}
                 />
                 <br/>
                 <AButton
