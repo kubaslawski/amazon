@@ -32,7 +32,7 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
         setQuantity(parseInt(e.target.value));
     };
     const handleAddToBasket = () => {
-        addToBasket(product.id, quantity);
+        addToBasket(product, quantity);
     }
 
     return (

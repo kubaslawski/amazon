@@ -1,10 +1,16 @@
-export const addToBasket = (productId: number, quantity: number) => {
+import {IProduct} from "../../interfaces/products";
+
+export const addToBasket = (product: IProduct, quantity: number) => {
     let basket = JSON.parse(localStorage.getItem('basket') || '[]');
-    const productDetails = {
-        'productId': productId,
+    interface IProductBasket {
+        product: IProduct;
+        quantity: number;
+    }
+    const productBasket: IProductBasket = {
+        'product': product,
         'quantity': quantity
     }
-    const index = basket.findIndex((x: any) => x.productId === productDetails.productId);
+    const index = basket.findIndex((x: IProductBasket) => x.product.id === productBasket.product.id);
     if(index > -1){
         let newBasket = [...basket];
         newBasket[index] = {
@@ -13,7 +19,7 @@ export const addToBasket = (productId: number, quantity: number) => {
         }
         localStorage.setItem('basket', JSON.stringify(newBasket));
     } else {
-        let newBasket = [...basket, productDetails];
+        let newBasket = [...basket, productBasket];
         localStorage.setItem('basket', JSON.stringify(newBasket));
     }
     window.dispatchEvent(new Event('storage'));
