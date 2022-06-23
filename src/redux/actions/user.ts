@@ -13,6 +13,11 @@ import axios from 'axios';
 import {IDispatchInterface} from "../../interfaces/global";
 import {IAuth} from "../../interfaces/users";
 
+export interface IBasketItem {
+    product: number;
+    quantity: number;
+}
+
 export const loginUser = (userData: IAuth, navigate:any) => (dispatch: IDispatchInterface) => {
     dispatch({type: LOADING_UI});
     axios.post('/token/', userData)
@@ -43,6 +48,17 @@ const setAuthorizationToken = (token:string) => {
 
 export const getUserBasket = () => (dispatch: IDispatchInterface) => {
     axios.get('/basket/')
+        .then((res) => {
+            dispatch({
+                type: SET_BASKET,
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err));
+}
+
+export const editBasket = (basketItem: IBasketItem) => (dispatch: IDispatchInterface) => {
+    axios.post('/basket/', basketItem)
         .then((res) => {
             dispatch({
                 type: SET_BASKET,

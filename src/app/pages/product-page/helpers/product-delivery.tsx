@@ -1,6 +1,6 @@
 import React, {useState} from "react";
+import {IDispatchInterface} from "../../../../interfaces/global";
 import './helpers.scss';
-import axios from "axios";
 // components
 import ProductPrice from "../../../components/product/product-price/product-price";
 import ASelectInput from "../../../reusable-components/inputs/ASelectInput/ASelectInput";
@@ -10,6 +10,8 @@ import location from '../../../../icons/location.png';
 import lock from '../../../../icons/lock.png';
 // interfaces
 import {IProduct} from "../../../../interfaces/products";
+import {editBasket, IBasketItem} from "../../../../redux/actions/user";
+import {useDispatch} from "react-redux";
 
 interface IProductDelivery {
     product: IProduct
@@ -17,8 +19,8 @@ interface IProductDelivery {
 
 const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
 
+    const dispatch: IDispatchInterface = useDispatch();
     const {stock, price} = product;
-
     const options = Array.from(Array(stock).keys()).map((obj) => {
         return {
             value: obj,
@@ -30,10 +32,13 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
     const handleChange = (e: any) => {
         setQuantity(parseInt(e.target.value));
     };
+
     const handleAddToBasket = () => {
-        axios.post('/basket/', {product: product.id, quantity: quantity})
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+        const basketItem: IBasketItem = {
+            product: product.id,
+            quantity: quantity
+        }
+        dispatch(editBasket(basketItem));
     }
 
     return (
