@@ -1,4 +1,3 @@
-import {ISeller} from "./users";
 import {IOption} from "./global";
 
 export interface IProductRate {
@@ -18,7 +17,6 @@ export interface IAddProduct {
 
 export interface IProduct {
     id: number;
-    seller: ISeller;
     category: IOption;
     name: string;
     description: string;
