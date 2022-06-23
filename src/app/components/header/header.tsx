@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import './header.scss';
 import "../../../scss/global.scss";
 // components
@@ -14,21 +15,17 @@ import ADropdown from "../../reusable-components/ADropdown/ADropdown";
 import UserPanel from "./user-panel/user-panel";
 
 
+
 const optionList = ["option1", "option2", "option3", "option4"];
 
 const Header = () => {
 
     const [searchInputValue, setSearchInputValue] = useState<string>("");
+    const basket_count = useSelector((state: any) => state.user.credentials.basket_count)
     const onSearchInputChange = (event: any) => {
         setSearchInputValue(event.target.value);
     };
 
-    const [itemCount, setItemCount] = useState(0);
-
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <div className="header__container">
@@ -59,25 +56,19 @@ const Header = () => {
                     <img className="flag-image" src={polishFlag} alt="your country"/>
                     <img className="dropdown-image" src={dropdown} alt="dropdown"/>
                 </div>
-                
                 <UserPanel/>
-                
-                
                 <div className="global__navbar--link flex">
                     <span>Returns <br/> <b>& Orders</b> </span>
                 </div>
 
                     <div className="global__navbar--link flex basket-panel">
                         <Link to={'/basket'}>
-                            <span className="basket-items"><b>{itemCount}</b></span>
+                            <span className="basket-items"><b>{basket_count}</b></span>
                             <img className="basket" src={cart} alt="your basket"/>
                             <span className="basket-panel__span"><b>Cart</b></span>
                         </Link>
                     </div>
-
             </div>
-        
-        
         </div>
     )
 }
