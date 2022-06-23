@@ -1,0 +1,38 @@
+@import "../../../scss/variables";
+
+.basket-page {
+  margin-top: 50px;
+}
+
+.basket-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.basket-table td, .basket-table th {
+  border: 1px solid $grey;
+  padding: 8px;
+}
+.basket-table td {
+  > div > img {
+    max-width: 100px;
+  }
+}
+
+.basket-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: $charcoal;
+  color: white;
+  text-align: center;
+}
+
+.basket-table__product-details {
+  text-align: center;
+}
+
+.basket-table__buttons {
+  > .a__button {
+    margin-right: 5%;
+  }
+}

@@ -24,27 +24,11 @@ const Header = () => {
     };
 
     const [itemCount, setItemCount] = useState(0);
-    const checkBasket = () => {
-        const basket = JSON.parse(localStorage.getItem('basket') || '[]');
-        if(basket.length < 1){
-            setItemCount(0);
-        } else {
-            let quantity = 0;
-            basket.forEach((obj: any) => {
-                quantity = quantity + obj.quantity
-            })
-            setItemCount(quantity);
-        }
-    }
+
 
     useEffect(() => {
-        checkBasket();
-        window.addEventListener('storage', checkBasket, false);
-        window.dispatchEvent(new Event('storage'));
-        return () => {
-            window.removeEventListener('storage', checkBasket);
-        }
-    }, [])
+
+    }, []);
 
     return (
         <div className="header__container">
@@ -82,12 +66,15 @@ const Header = () => {
                 <div className="global__navbar--link flex">
                     <span>Returns <br/> <b>& Orders</b> </span>
                 </div>
-                
-                <div className="global__navbar--link flex basket-panel">
-                    <span className="basket-items"><b>{itemCount}</b></span>
-                    <img className="basket" src={cart} alt="your basket"/>
-                    <span className="basket-panel__span"><b>Cart</b></span>
-                </div>
+
+                    <div className="global__navbar--link flex basket-panel">
+                        <Link to={'/basket'}>
+                            <span className="basket-items"><b>{itemCount}</b></span>
+                            <img className="basket" src={cart} alt="your basket"/>
+                            <span className="basket-panel__span"><b>Cart</b></span>
+                        </Link>
+                    </div>
+
             </div>
         
         

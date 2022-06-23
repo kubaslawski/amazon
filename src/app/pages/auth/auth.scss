@@ -17,6 +17,9 @@
       font-weight: 400;
     }
     > .auth-form--login {
+      > .a__button {
+        margin-top: 20px;
+      }
       > .a__input {
         margin-top: 15px;
         > .a__input--input {
@@ -27,6 +30,9 @@
     > .auth-form {
       padding-bottom: 20px;
       border-bottom: $grey-border;
+      > .a__button {
+        margin-top: 20px;
+      }
       > .a__input {
         margin-top: 15px;
         > .a__input--input {

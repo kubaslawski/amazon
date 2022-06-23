@@ -23,6 +23,7 @@ import LoginPage from "./app/pages/auth/login-page";
 import {getUserData} from "./redux/actions/user";
 // interfaces
 import {SET_AUTHENTICATED} from "./redux/types";
+import BasketPage from "./app/pages/basket-page/basket-page";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
@@ -67,6 +68,10 @@ function App() {
                         <Route
                             path="/category/:id"
                             element={<ProductsPage/>}
+                        />
+                        <Route
+                            path={'/basket'}
+                            element={<BasketPage/>}
                         />
                         <Route
                             path="/register"

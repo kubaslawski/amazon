@@ -3,7 +3,9 @@ import {
     LOADING_UI,
     SET_ERRORS,
     CLEAR_ERRORS,
-    LOADING_USER, SET_UNAUTHENTICATED
+    LOADING_USER,
+    SET_UNAUTHENTICATED,
+    SET_BASKET
 } from "../types";
 // external libraries
 import axios from 'axios';
@@ -37,6 +39,17 @@ const setAuthorizationToken = (token:string) => {
     const bearerToken = `Bearer ${token}`
     localStorage.setItem('token', bearerToken);
     axios.defaults.headers.common['Authorization'] = bearerToken;
+}
+
+export const getUserBasket = () => (dispatch: IDispatchInterface) => {
+    axios.get('/basket/')
+        .then((res) => {
+            dispatch({
+                type: SET_BASKET,
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err));
 }
 
 export const getUserData = () => (dispatch: any) => {

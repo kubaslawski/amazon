@@ -2,11 +2,19 @@ import {
     LOADING_USER,
     SET_USER,
     SET_AUTHENTICATED,
-    SET_UNAUTHENTICATED,
+    SET_UNAUTHENTICATED, SET_BASKET,
 } from "../types";
+// interfaces
+import {IProduct} from "../../interfaces/products";
+
+interface IBasketItem {
+    product: IProduct;
+    quantity: number;
+}
 
 export interface IUsersInitialState {
     authenticated: boolean;
+    basket: Array<IBasketItem>;
     credentials: unknown;
     loading: boolean;
 }
@@ -14,6 +22,7 @@ export interface IUsersInitialState {
 
 const initialState = {
     authenticated: false,
+    basket: [] as Array<IBasketItem>,
     credentials: {},
     loading: false
 };
@@ -37,6 +46,11 @@ export default function (state: IUsersInitialState=initialState, action: any){
                 authenticated: true,
                 loading: false,
                 credentials: action.payload
+            }
+        case SET_BASKET:
+            return {
+                ...state,
+                basket: action.payload
             }
         default: return state
     }

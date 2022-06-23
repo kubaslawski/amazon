@@ -7,13 +7,14 @@ interface IAButton {
     className?: string;
     onClick?: (...args: any) => void;
     text: string;
+    value?: string | number;
     variant?: TVariant
 }
 
-const AButton: React.FC<IAButton> = ({disabled, className, onClick, text, variant = "filled"}) => {
+const AButton: React.FC<IAButton> = ({disabled, className, onClick, text, value, variant = "filled"}) => {
     const AButtonClassName = `a__button ${variant} ${className}`;
     return (
-        <button className={AButtonClassName} onClick={onClick} disabled={disabled}>
+        <button className={AButtonClassName} onClick={onClick} disabled={disabled} value={value}>
             {text}
         </button>
     )

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './helpers.scss';
+import axios from "axios";
 // components
 import ProductPrice from "../../../components/product/product-price/product-price";
 import ASelectInput from "../../../reusable-components/inputs/ASelectInput/ASelectInput";
@@ -9,8 +10,6 @@ import location from '../../../../icons/location.png';
 import lock from '../../../../icons/lock.png';
 // interfaces
 import {IProduct} from "../../../../interfaces/products";
-// functions
-import {addToBasket} from "../../../functions/add-to-basket";
 
 interface IProductDelivery {
     product: IProduct
@@ -32,7 +31,9 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
         setQuantity(parseInt(e.target.value));
     };
     const handleAddToBasket = () => {
-        addToBasket(product, quantity);
+        axios.post('/basket/', {product: product.id, quantity: quantity})
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     }
 
     return (
