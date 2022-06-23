@@ -13,11 +13,6 @@
   border: 1px solid $grey;
   padding: 8px;
 }
-.basket-table td {
-  > div > img {
-    max-width: 100px;
-  }
-}
 
 .basket-table th {
   padding-top: 12px;
@@ -35,4 +30,12 @@
   > .a__button {
     margin-right: 5%;
   }
+}
+
+.basket-table__product-image {
+  max-width: 100px;
+}
+
+.basket-table__product-link {
+  text-decoration: none;
 }

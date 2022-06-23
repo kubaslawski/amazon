@@ -25,6 +25,8 @@ import {getUserData} from "./redux/actions/user";
 import {SET_AUTHENTICATED} from "./redux/types";
 import BasketPage from "./app/pages/basket-page/basket-page";
 
+
+export const appURL = "http://127.0.0.1:8000"
 axios.defaults.baseURL = "http://127.0.0.1:8000/amazon/"
 
 const token = localStorage.getItem('token');
@@ -39,7 +41,6 @@ if(token){
         store.dispatch(getUserData())
     }
 }
-
 
 
 

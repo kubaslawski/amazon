@@ -1,10 +1,12 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './basket-page.scss';
+import {Link} from "react-router-dom";
+import {appURL} from "../../../App";
 // components
 import AButton from "../../reusable-components/AButton/AButton";
 // actions
-import {getUserBasket} from "../../../redux/actions/user";
+import {editBasket, getUserBasket, IBasketItem} from "../../../redux/actions/user";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 
@@ -17,8 +19,20 @@ const BasketPage: React.FC = () => {
         dispatch(getUserBasket());
     }, [dispatch]);
 
-    const handleAdd = () => {};
-    const handleRemove = () => {};
+    const handleAdd = (e: any) => {
+        const basketItem: IBasketItem = {
+            product: e.target.value,
+            quantity: 1
+        };
+        dispatch(editBasket(basketItem));
+    };
+    const handleRemove = (e: any) => {
+        const basketItem: IBasketItem = {
+            product: e.target.value,
+            quantity: -1
+        };
+        dispatch(editBasket(basketItem));
+    };
 
     return (
         <div className={'basket-page row'}>
@@ -37,10 +51,22 @@ const BasketPage: React.FC = () => {
                         return (
                             <tr key={obj.product.id}>
                                 <td>
-                                    <div className={'basket-table__product-details'}>
-                                        <p>{obj.product.name}</p>
-                                        <img src={obj.product.photo} alt={'product-photo'}/>
-                                    </div>
+                                    <Link
+                                        className={'basket-table__product-link'}
+                                        to={{
+                                        pathname: `/product/${obj.product.id}`
+                                        }}>
+                                        <div className={'basket-table__product-details'}>
+                                            <p>{obj.product.name}</p>
+                                            {obj.product.photo.startsWith('http') ? (
+                                                <img className={'basket-table__product-image'} src={obj.product.photo} alt={'product-photo'}/>
+                                            ) : (
+                                                <img className={'basket-table__product-image'} src={`${appURL}${obj.product.photo}`} alt={'product-photo'}/>
+                                            )}
+
+                                        </div>
+                                    </Link>
+
                                 </td>
                                 <td>
                                     <p className={'p-center'}>{obj.quantity}</p>
