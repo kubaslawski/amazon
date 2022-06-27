@@ -29,9 +29,8 @@ const AddProduct: React.FC = () => {
     const [img, setImg] = useState("");
 
     useEffect(() => {
-        console.log('mount')
         dispatch(getAllCategories());
-    }, [])
+    }, [dispatch])
 
     const handleChange = (event: any) => {
         setProductData({

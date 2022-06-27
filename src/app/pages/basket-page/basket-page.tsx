@@ -59,9 +59,9 @@ const BasketPage: React.FC = () => {
                                         <div className={'basket-table__product-details'}>
                                             <p>{obj.product.name}</p>
                                             {obj.product.photo.startsWith('http') ? (
-                                                <img className={'basket-table__product-image'} src={obj.product.photo} alt={'product-photo'}/>
+                                                <img className={'basket-table__product-image'} src={obj.product.photo} alt={'product'}/>
                                             ) : (
-                                                <img className={'basket-table__product-image'} src={`${appURL}${obj.product.photo}`} alt={'product-photo'}/>
+                                                <img className={'basket-table__product-image'} src={`${appURL}${obj.product.photo}`} alt={'product'}/>
                                             )}
 
                                         </div>

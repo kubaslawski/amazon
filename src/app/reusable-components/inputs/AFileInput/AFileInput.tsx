@@ -1,6 +1,5 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 import "../inputs.scss";
-import AButton from "../../AButton/AButton";
 
 interface IAPhotoInput {
     label?: string;
