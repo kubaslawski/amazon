@@ -24,6 +24,7 @@ import {getUserData} from "./redux/actions/user";
 // interfaces
 import {SET_AUTHENTICATED} from "./redux/types";
 import BasketPage from "./app/pages/basket-page/basket-page";
+import HomePage from "./app/pages/home-page/home-page";
 
 
 export const appURL = "http://127.0.0.1:8000"
@@ -54,6 +55,10 @@ function App() {
                     <Header/>
                     <SecondHeader/>
                     <Routes>
+                        <Route
+                            path="/"
+                            element={<HomePage/>}
+                        />
                         <Route
                             path="/products"
                             element={<ProductsPage/>}
