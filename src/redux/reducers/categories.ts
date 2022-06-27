@@ -12,7 +12,9 @@ const initialState: ICategoriesInitialState = {
     categories: [] as Array<ICategory>,
     category: {
         value: '',
-        label: ''
+        label: '',
+        photo: '',
+        pk: '',
     },
     errors: [] as Array<any>
 }

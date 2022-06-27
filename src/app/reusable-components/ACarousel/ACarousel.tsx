@@ -27,9 +27,9 @@ const ACarousel: React.FC<IACarousel> = ({slides}) => {
             <img src={next} className={'right arrow'} onClick={nextSlide} alt={'right-arrow'}/>
             {slides.map((slide: any, index: any) => {
                 return (
-                    <div className={index === current ? 'slide-active' : 'slide'}>
+                    <div className={index === current ? 'slide-active' : 'slide'} key={index}>
                         {index === current && (
-                            <img key={index} src={slide.image} alt={'carousel'} className={'image'}/>
+                            <img src={slide.image} alt={'carousel'} className={'image'}/>
                         )}
                     </div>
                 )
