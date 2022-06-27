@@ -7,13 +7,31 @@ import {appURL} from "../../../App";
 import AButton from "../../reusable-components/AButton/AButton";
 // actions
 import {editBasket, getUserBasket, IBasketItem} from "../../../redux/actions/user";
+import {IBasketItemObject} from "../../../redux/reducers/user";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 
 const BasketPage: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const basketItems = useSelector((state: any) => state.user.basket);
+    const basketItems: Array<IBasketItemObject> = useSelector((state: any) => state.user.basket);
+
+    const countQuantity = () => {
+        let totalQuantity = 0;
+        basketItems?.forEach((obj) => {
+            totalQuantity += obj.quantity
+        })
+        return totalQuantity;
+    }
+
+    const countPrice = () => {
+        let totalPrice = 0;
+        basketItems?.forEach((obj) => {
+            totalPrice += obj.quantity * obj.product.price
+        })
+        return totalPrice;
+    }
+    countPrice();
 
     useEffect(() => {
         dispatch(getUserBasket());
@@ -43,6 +61,7 @@ const BasketPage: React.FC = () => {
                         <tr>
                             <th>Product</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -72,6 +91,9 @@ const BasketPage: React.FC = () => {
                                     <p className={'p-center'}>{obj.quantity}</p>
                                 </td>
                                 <td>
+                                    <p className={'p-center'}>{obj.quantity * obj.product.price} $</p>
+                                </td>
+                                <td>
                                     <div className={'flex basket-table__buttons'}>
                                         <AButton text={'+'} onClick={handleAdd} value={obj.product.id}/>
                                         <AButton text={'-'} onClick={handleRemove} value={obj.product.id}/>
@@ -80,6 +102,27 @@ const BasketPage: React.FC = () => {
                             </tr>
                         )
                     })}
+                    {basketItems?.length > 0 && (
+                        <>
+                            <tr>
+                                <td></td>
+                                <th>
+                                    Total Items:
+                                </th>
+                                <th>
+                                    Checkout
+                                </th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>{countQuantity()}</td>
+                                <td>{countPrice()} $</td>
+                                <td></td>
+                            </tr>
+                        </>
+                    )}
+
                     </tbody>
                 </table>
             </div>

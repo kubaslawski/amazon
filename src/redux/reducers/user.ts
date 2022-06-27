@@ -7,14 +7,15 @@ import {
 // interfaces
 import {IProduct} from "../../interfaces/products";
 
-interface IBasketItem {
+export interface IBasketItemObject {
+    basket: number;
     product: IProduct;
     quantity: number;
 }
 
 export interface IUsersInitialState {
     authenticated: boolean;
-    basket: Array<IBasketItem>;
+    basket: Array<IBasketItemObject>;
     credentials: unknown;
     loading: boolean;
 }
@@ -22,7 +23,7 @@ export interface IUsersInitialState {
 
 const initialState = {
     authenticated: false,
-    basket: [] as Array<IBasketItem>,
+    basket: [] as Array<IBasketItemObject>,
     credentials: {},
     loading: false
 };
