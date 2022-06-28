@@ -26,8 +26,7 @@ const UserPanel: React.FC = () => {
     const handleLogout = () => {
         dispatch(logoutUser());
     }
-
-
+    
     return (
         <>
             <div className="global__navbar--link login-panel" onClick={handleOpen}>
@@ -50,13 +49,13 @@ const UserPanel: React.FC = () => {
                     <div className="user-panel__top">
                         {user.authenticated ? (
                             <>
-                                <Link to={{pathname: '/login'}}>
+                                <Link to={{pathname: '/login'}} onClick={() => setOpen(false)}>
                                     <AButton className='user-panel__login-button' text={'Logout'} onClick={handleLogout}/>
                                 </Link>
                             </>
                         ) : (
                             <>
-                                <Link to={{pathname: '/login'}}>
+                                <Link to={{pathname: '/login'}} onClick={() => setOpen(false)}>
                                     <AButton className='user-panel__login-button' text="Sign in"/>
                                 </Link>
                                 <br/>
