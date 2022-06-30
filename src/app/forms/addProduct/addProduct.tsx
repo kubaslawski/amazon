@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, ChangeEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./addProduct.scss";
 // components
@@ -32,7 +32,7 @@ const AddProduct: React.FC = () => {
         dispatch(getAllCategories());
     }, [dispatch])
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setProductData({
             ...productData,
             [event.target.name]: event.target.value

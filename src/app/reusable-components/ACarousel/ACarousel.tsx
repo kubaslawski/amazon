@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import './ACarousel.scss';
 // icons
-import next from './icons/next.png';
-import prev from './icons/prev.png';
+import next from '../../../icons/next.png';
+import prev from '../../../icons/prev.png';
 
 
 interface IACarousel {

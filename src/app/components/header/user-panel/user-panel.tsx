@@ -26,7 +26,7 @@ const UserPanel: React.FC = () => {
     const handleLogout = () => {
         dispatch(logoutUser());
     }
-    
+
     return (
         <>
             <div className="global__navbar--link login-panel" onClick={handleOpen}>
