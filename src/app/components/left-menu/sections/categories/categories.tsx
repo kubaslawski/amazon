@@ -13,8 +13,6 @@ interface ICategoriesMenuSection {
 
 const CategoriesMenuSection: React.FC<ICategoriesMenuSection> = ({categories}) => {
 
-    console.log(categories)
-
     return (
         <section className={'categories-display'}>
             <p className={'left-menu__p-title'}>Categories:</p>
