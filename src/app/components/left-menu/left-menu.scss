@@ -4,7 +4,7 @@
   overflow-y: scroll;
   position: absolute;
   background: white;
-  top: 40px;
+  top: 0;
   left: 0;
   z-index: 10;
   width: 400px;
@@ -39,14 +39,14 @@
   &:hover {
     background: #eaeded;
   }
-  > .left-menu__p-normal {
-    padding: 10px 20px 10px 36px;
-  }
-  > .left-menu__arrow-right {
-    width: 15px;
-    height: 15px;
-    margin: auto 0;
-  }
+}
+.left-menu__p-normal {
+  padding: 10px 20px 10px 36px;
+}
+.left-menu__arrow-right {
+  width: 15px;
+  height: 15px;
+  margin: auto 0;
 }
 
 .left-menu__p-container-2 {
@@ -61,4 +61,13 @@
   &:hover {
     background: #eaeded;
   }
+}
+
+.left_menu__close-icon {
+  position: absolute;
+  top: 10px;
+  left: 410px;
+  width: 25px;
+  height: 25px;
+  z-index: 10;
 }

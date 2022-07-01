@@ -16,19 +16,21 @@ const CategoriesMenuSection: React.FC<ICategoriesMenuSection> = ({categories}) =
     return (
         <section className={'categories-display'}>
             <p className={'left-menu__p-title'}>Categories:</p>
-            {categories.map((obj: ICategory, index: number) => {
+            {categories.map((obj: ICategory) => {
                 return (
-                    <Link
-                        key={index}
-                        to={{
-                            pathname: `/category/${obj.pk}`
-                        }}>
-                        <div className={'flex left-menu__p-container'}>
-                            <p className={'left-menu__p-normal'} >{obj.label}</p>
-                            <img className={'left-menu__arrow-right'} src={next} alt={'next'}/>
-                        </div>
+                    <div key={`category${obj.label}`}>
+                        <Link
+                            className={'global__link-1'}
+                            to={{
+                                pathname: `/category/${obj.pk}`
+                            }}>
+                            <div className={'flex left-menu__p-container'}>
+                                <p className={'left-menu__p-normal'}>{obj.label}</p>
+                                <img className={'left-menu__arrow-right'} src={next} alt={'next'}/>
+                            </div>
+                        </Link>
                         {obj.sub_categories && <SubCategoriesMenuSection sub_categories={obj.sub_categories}/>}
-                    </Link>
+                    </div>
                 )
             })}
         </section>

@@ -72,3 +72,13 @@
 .bold {
   font-weight: bold;
 }
+
+// a
+.global__link-1 {
+  color: $black;
+  text-decoration: none;
+  &:hover {
+    color: $black;
+    text-decoration: none;
+  }
+}

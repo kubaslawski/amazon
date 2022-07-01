@@ -1,11 +1,12 @@
 import React from "react";
 import './left-menu.scss';
 import {useSelector} from "react-redux";
+// components
+import CategoriesMenuSection from "./sections/categories/categories";
 // interfaces
 import {ICategory} from "../../../interfaces/categories";
 // icons/photos
 import user from "../../images/user.png";
-import CategoriesMenuSection from "./sections/categories/categories";
 
 
 const LeftMenu: React.FC = () => {
