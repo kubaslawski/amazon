@@ -41,6 +41,8 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
         dispatch(editBasket(basketItem));
     }
 
+    console.log(stock)
+
     return (
         <div className='col-4 product-delivery'>
             <ProductPrice price={price}/>
