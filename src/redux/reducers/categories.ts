@@ -11,8 +11,7 @@ export interface ICategoriesInitialState {
 const initialState: ICategoriesInitialState = {
     categories: [] as Array<ICategory>,
     category: {
-        value: '',
-        label: '',
+        title: '',
         photo: '',
         pk: '',
         sub_categories: [] as Array<ISubCategory>

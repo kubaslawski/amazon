@@ -18,14 +18,14 @@ const CategoriesMenuSection: React.FC<ICategoriesMenuSection> = ({categories}) =
             <p className={'left-menu__p-title'}>Categories:</p>
             {categories.map((obj: ICategory) => {
                 return (
-                    <div key={`category${obj.label}`}>
+                    <div key={`category${obj.title}`}>
                         <Link
                             className={'global__link-1'}
                             to={{
                                 pathname: `/category/${obj.pk}`
                             }}>
                             <div className={'flex left-menu__p-container'}>
-                                <p className={'left-menu__p-normal'}>{obj.label}</p>
+                                <p className={'left-menu__p-normal'}>{obj.title}</p>
                                 <img className={'left-menu__arrow-right'} src={next} alt={'next'}/>
                             </div>
                         </Link>

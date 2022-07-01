@@ -1,6 +1,5 @@
 export interface ICategory {
-    value: string;
-    label: string;
+    title: string;
     photo: string;
     pk: string;
     sub_categories: Array<ISubCategory>;

@@ -1,5 +1,4 @@
-import {IOption} from "./global";
-import {ISubCategory} from "./categories";
+import {ISubCategory, ICategory} from "./categories";
 
 export interface IProductRate {
     avg_rate: number;
@@ -18,7 +17,7 @@ export interface IAddProduct {
 
 export interface IProduct {
     id: number;
-    category: IOption;
+    category: ICategory;
     sub_category: ISubCategory;
     name: string;
     description: string;

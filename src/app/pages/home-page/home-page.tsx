@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
             <div className={'home-page__content row'}>
                 {categories?.map((obj: ICategory) => {
                     return (
-                        <ACard title={obj.label} photo={obj.photo} pk={obj.pk} key={obj.pk + obj.label}/>
+                        <ACard title={obj.title} photo={obj.photo} pk={obj.pk} key={obj.pk + obj.title}/>
                     )
                 })}
             </div>
