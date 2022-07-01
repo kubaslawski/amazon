@@ -46,21 +46,19 @@
     width: 15px;
     height: 15px;
     margin: auto 0;
-
   }
 }
 
-
-
-
-
-
-
-.categories-display {
-  border-bottom: $grey-border-1;
-  padding-bottom: 10px;
+.left-menu__p-container-2 {
   > a {
-    text-decoration: none !important;
     color: $black;
+    text-decoration: none;
+  }
+}
+
+.left-menu__p-normal-2 {
+  padding: 5px 20px 5px 60px;
+  &:hover {
+    background: #eaeded;
   }
 }

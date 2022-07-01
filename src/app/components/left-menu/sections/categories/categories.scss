@@ -1,0 +1,10 @@
+@import '../../../../../scss/variables';
+
+.categories-display {
+  border-bottom: $grey-border-1;
+  padding-bottom: 10px;
+  > a {
+    text-decoration: none !important;
+    color: $black;
+  }
+}

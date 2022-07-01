@@ -1,5 +1,5 @@
 import {ADD_CATEGORY, GET_ALL_CATEGORIES} from "../types";
-import {ICategory} from "../../interfaces/categories";
+import {ICategory, ISubCategory} from "../../interfaces/categories";
 import {IAction} from "../../interfaces/global";
 
 export interface ICategoriesInitialState {
@@ -15,6 +15,7 @@ const initialState: ICategoriesInitialState = {
         label: '',
         photo: '',
         pk: '',
+        sub_categories: [] as Array<ISubCategory>
     },
     errors: [] as Array<any>
 }
