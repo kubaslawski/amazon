@@ -24,11 +24,11 @@ const SecondHeader: React.FC = () => {
             <div className="secondHeader__container">
                 <div className="secondHeader__navbar">
                     <div
-                        className="global__navbar--link"
+                        className="global__navbar--link flex"
                         onClick={() => setIsOpen(true)}
                     >
                         <img src={menu} alt="menu" className="secondHeader__container--menu-image"/>
-                        <Link className="link" to="/">All</Link>
+                        <p>All</p>
                     </div>
                     <div className="global__navbar--link ">
                         <Link className="link" to="/">Today's Deals</Link>
