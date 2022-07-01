@@ -7,6 +7,14 @@ import {
 // interfaces
 import {IProduct} from "../../interfaces/products";
 
+export interface IAddress {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    post_code: string;
+}
+
 export interface IBasketItemObject {
     basket: number;
     product: IProduct;
@@ -14,6 +22,7 @@ export interface IBasketItemObject {
 }
 
 export interface IUsersInitialState {
+    address: IAddress;
     authenticated: boolean;
     basket: Array<IBasketItemObject>;
     credentials: unknown;
@@ -22,6 +31,13 @@ export interface IUsersInitialState {
 
 
 const initialState = {
+    address: {
+        country: '',
+        state: '',
+        city: '',
+        street: '',
+        post_code: '',
+    },
     authenticated: false,
     basket: [] as Array<IBasketItemObject>,
     credentials: {},

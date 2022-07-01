@@ -21,11 +21,13 @@ const optionList = ["option1", "option2", "option3", "option4"];
 const Header = () => {
 
     const [searchInputValue, setSearchInputValue] = useState<string>("");
+    const address = useSelector((state: any) => state.user.credentials.address);
     const basket_count = useSelector((state: any) => state.user.credentials.basket_count)
     const onSearchInputChange = (event: any) => {
         setSearchInputValue(event.target.value);
     };
 
+    console.log(address);
 
     return (
         <div className="header__container">
@@ -43,7 +45,9 @@ const Header = () => {
                         <img src={location} alt="location-white"/>
                     </div>
                     <div>
-                        <span>Deliver to <br/> <b>Poland</b></span>
+                        {address?.country && (
+                            <span>Deliver to <br/> <b>{address.country}</b></span>
+                        )}
                     </div>
                 </div>
                 <div className="header__container--searchBar">
