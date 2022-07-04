@@ -6,9 +6,10 @@ import ListDisplay from "./helpers/list-display/ListDisplay";
 
 interface IADropdown {
     optionList: Array<string>;
+    initialOption?: string;
 }
 
-const ADropdown: React.FC<IADropdown> = ({optionList}) => {
+const ADropdown: React.FC<IADropdown> = ({optionList, initialOption}) => {
 
     const [open, setOpen] = useState<boolean>(false);
     const onClickOutsideListener = () => {
@@ -20,7 +21,7 @@ const ADropdown: React.FC<IADropdown> = ({optionList}) => {
         <>
             <div className="ADropdown__container" onClick={() => setOpen(!open)} onMouseLeave={() => document.addEventListener("click", onClickOutsideListener)} >
                 <div className="ADropdown__dropdown-title">
-                    All
+                        {initialOption}
                 </div>
                 <img src={dropdown} alt="dropdown-black"/>
             </div>

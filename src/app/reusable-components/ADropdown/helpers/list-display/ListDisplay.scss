@@ -3,10 +3,10 @@
 .ListDisplay__container {
   background: $pure-white;
   position: absolute;
-  top: 45px;
+  top: 68px;
+  left: 235px;
   z-index: 10;
   width: 200px;
-  height: 400px;
   overflow-y: scroll;
   border: 1px solid $black;
   > span {
@@ -14,6 +14,7 @@
     padding: 5px 2px;
     &:hover {
       background: $option-highlighted;
+      color: $white;
     }
   }
 }

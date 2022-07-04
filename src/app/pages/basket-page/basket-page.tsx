@@ -118,7 +118,15 @@ const BasketPage: React.FC = () => {
                                 <td></td>
                                 <td>{countQuantity()}</td>
                                 <td>{countPrice()} $</td>
-                                <td></td>
+                                <td>
+                                    <Link to={{
+                                        pathname: `/checkout`
+                                    }}>
+                                        <AButton
+                                        text={'Checkout'}
+                                        />
+                                    </Link>
+                                </td>
                             </tr>
                         </>
                     )}
