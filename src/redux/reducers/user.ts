@@ -21,26 +21,40 @@ export interface IBasketItemObject {
     quantity: number;
 }
 
-export interface IUsersInitialState {
+interface ICredentials {
     address: IAddress;
+    id: number;
+    basket_count: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+}
+
+export interface IUsersInitialState {
     authenticated: boolean;
     basket: Array<IBasketItemObject>;
-    credentials: unknown;
+    credentials: ICredentials;
     loading: boolean;
 }
 
 
 const initialState = {
-    address: {
-        country: '',
-        state: '',
-        city: '',
-        street: '',
-        post_code: '',
-    },
     authenticated: false,
     basket: [] as Array<IBasketItemObject>,
-    credentials: {},
+    credentials: {
+        address: {
+            country: '',
+            state: '',
+            city: '',
+            street: '',
+            post_code: '',
+        },
+        id: 0,
+        basket_count: 0,
+        email: '',
+        first_name: '',
+        last_name: ''
+    },
     loading: false
 };
 

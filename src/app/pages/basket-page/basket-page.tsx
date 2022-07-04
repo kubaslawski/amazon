@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {ChangeEvent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './basket-page.scss';
 import {Link} from "react-router-dom";
@@ -7,14 +7,15 @@ import {appURL} from "../../../App";
 import AButton from "../../reusable-components/AButton/AButton";
 // actions
 import {editBasket, getUserBasket, IBasketItem} from "../../../redux/actions/user";
-import {IBasketItemObject} from "../../../redux/reducers/user";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
+import {IState} from "../../../redux/store";
+import {IBasketItemObject} from "../../../redux/reducers/user";
 
 const BasketPage: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const basketItems: Array<IBasketItemObject> = useSelector((state: any) => state.user.basket);
+    const basketItems: Array<IBasketItemObject> = useSelector((state: IState) => state.user.basket);
 
     const countQuantity = () => {
         let totalQuantity = 0;
@@ -37,16 +38,16 @@ const BasketPage: React.FC = () => {
         dispatch(getUserBasket());
     }, [dispatch]);
 
-    const handleAdd = (e: any) => {
+    const handleAdd = (e: ChangeEvent<HTMLInputElement>) => {
         const basketItem: IBasketItem = {
-            product: e.target.value,
+            product: parseInt(e.target.value),
             quantity: 1
         };
         dispatch(editBasket(basketItem));
     };
-    const handleRemove = (e: any) => {
+    const handleRemove = (e: ChangeEvent<HTMLInputElement>) => {
         const basketItem: IBasketItem = {
-            product: e.target.value,
+            product: parseInt(e.target.value),
             quantity: -1
         };
         dispatch(editBasket(basketItem));
@@ -66,7 +67,7 @@ const BasketPage: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {basketItems?.map((obj: any) => {
+                    {basketItems?.map((obj: IBasketItemObject) => {
                         return (
                             <tr key={obj.product.id}>
                                 <td>

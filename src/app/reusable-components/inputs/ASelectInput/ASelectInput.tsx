@@ -8,7 +8,7 @@ export interface IASelectInput {
     name?: string;
     onChange: (...args: any) => void;
     options: Array<IOption>;
-    value?: any;
+    value?: string | number;
 }
 
 const ASelectInput: React.FC<IASelectInput> = ({

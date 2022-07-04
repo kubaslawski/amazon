@@ -74,6 +74,7 @@ export const getUserData = () => (dispatch: any) => {
     })
     axios.get(`/token/verify_user/`)
         .then((res) => {
+            console.log(res.data)
             dispatch({
                 type: SET_USER,
                 payload: res.data

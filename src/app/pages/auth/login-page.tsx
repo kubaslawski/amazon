@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './auth.scss';
 // ext libraries
@@ -25,14 +25,14 @@ const LoginPage: React.FC = () => {
         password: '',
     })
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setUserData({
             ...userData,
             [event.target.name]: event.target.value
         })
     };
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
         dispatch(loginUser(userData, navigate));
     };

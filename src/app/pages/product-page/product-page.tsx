@@ -6,11 +6,12 @@ import {useParams} from "react-router-dom";
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
+import {IProduct} from "../../../interfaces/products";
+import {IState} from "../../../redux/store";
 // components
 import ProductDelivery from "./helpers/product-delivery";
 import ProductHeader from "./helpers/product-header";
 import ProductDetails from "./helpers/product-details";
-import {IProduct} from "../../../interfaces/products";
 import ProductImage from "./helpers/product-image";
 
 const ProductPage: React.FC = () => {
@@ -19,7 +20,7 @@ const ProductPage: React.FC = () => {
     const id = params['id'];
 
     const dispatch: IDispatchInterface = useDispatch();
-    const product: IProduct = useSelector((state: any) => state.products.product);
+    const product: IProduct = useSelector((state: IState) => state.products.product);
 
     useEffect(() => {
         if (id) {

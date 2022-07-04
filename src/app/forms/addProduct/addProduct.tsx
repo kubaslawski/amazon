@@ -12,11 +12,12 @@ import {addProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 import {IAddProduct} from "../../../interfaces/products";
+import {IState} from "../../../redux/store";
 
 const AddProduct: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const categories = useSelector((state: any) => state.categories.categories)
+    const categories = useSelector((state: IState) => state.categories.categories)
     const [productData, setProductData] = useState<IAddProduct>({
         category: "1",
         seller: "1",
@@ -61,7 +62,12 @@ const AddProduct: React.FC = () => {
                 <AInput label="description" name="description" onChange={handleChange} value={productData.description}/>
                 <AInput label="price" name="price" type="number" onChange={handleChange} value={productData.price}/>
                 <AInput label="stock" name="stock" type="number" onChange={handleChange} value={productData.stock}/>
-                <ASelectInput name='category' onChange={handleChange} options={categories} label="category"/>
+                <ASelectInput name='category' onChange={handleChange} options={categories.map((obj) => {
+                    return {
+                        value: obj.title,
+                        label: obj.title
+                    }
+                })} label="category"/>
                 <APhotoInput name="photo" label="photo" onPhotoChange={handleImageChange}/>
                 <AButton text="Submit" onClick={handleSubmit} className="add-product__button"/>
             </div>

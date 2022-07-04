@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {IDispatchInterface} from "../../../../interfaces/global";
 import './helpers.scss';
 // components
@@ -29,7 +29,7 @@ const ProductDelivery: React.FC<IProductDelivery> = ({product}) => {
     })
     const [quantity, setQuantity] = useState<number>(1);
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setQuantity(parseInt(e.target.value));
     };
 

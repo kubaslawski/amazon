@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import './auth.scss';
 // ext libraries
 import {Link} from "react-router-dom";
@@ -18,14 +18,14 @@ const RegisterPage: React.FC = () => {
         confirmPassword: '',
     })
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setUserData({
             ...userData,
             [event.target.name]: event.target.value
         })
     };
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
     };
 

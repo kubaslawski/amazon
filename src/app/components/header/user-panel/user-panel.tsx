@@ -10,13 +10,15 @@ import dropdown from "../../../images/dropdown-grey.png";
 import close from "../../../../icons/cancel.png";
 // interfaces
 import {IDispatchInterface} from "../../../../interfaces/global";
+import {IState} from "../../../../redux/store";
 // actions
 import {logoutUser} from "../../../../redux/actions/user";
+
 
 const UserPanel: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const user = useSelector((state: any) => state.user);
+    const user = useSelector((state: IState) => state.user);
 
     const {first_name, last_name} = user.credentials;
 

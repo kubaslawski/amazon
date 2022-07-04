@@ -9,12 +9,13 @@ import ProductCard from "../../components/product/product-card/product-card";
 // interfaces
 import {IProduct} from "../../../interfaces/products";
 import {IDispatchInterface} from "../../../interfaces/global";
+import {IState} from "../../../redux/store";
 
 const ProductsPage: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const params = useParams();
-    const products = useSelector((state: any) => state.products.products);
+    const products = useSelector((state: IState) => state.products.products);
 
     const {id} = params;
 

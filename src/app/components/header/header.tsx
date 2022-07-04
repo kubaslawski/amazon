@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import './header.scss';
-import "../../../scss/global.scss";
-// components
+// ext
 import {Link} from "react-router-dom";
+import axios from "axios";
 // images
 import location from "../../images/location-white.png";
 import dropdown from "../../images/dropdown-grey.png";
@@ -13,11 +13,11 @@ import cart from "../../images/shopping-cart-white.png";
 import ASearchBar from "../../reusable-components/ASearchBar/ASearchBar";
 import ADropdown from "../../reusable-components/ADropdown/ADropdown";
 import UserPanel from "./user-panel/user-panel";
-// x
-import axios from "axios";
 import SearchResult from "../search-result/search-result";
+// interfaces
 import {IProduct} from "../../../interfaces/products";
 import {keyboardKey} from "../../variables";
+import {IState} from "../../../redux/store";
 
 
 const optionList = ["products"];
@@ -27,8 +27,8 @@ const Header = () => {
     const [searchInputValue, setSearchInputValue] = useState<string>("");
     const [searchResults, setSearchResults] = useState([]);
 
-    const address = useSelector((state: any) => state.user.credentials.address);
-    const basket_count = useSelector((state: any) => state.user.credentials.basket_count)
+    const address = useSelector((state: IState) => state.user.credentials.address);
+    const basket_count = useSelector((state: IState) => state.user.credentials.basket_count)
 
     const onSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchInputValue(event.target.value);

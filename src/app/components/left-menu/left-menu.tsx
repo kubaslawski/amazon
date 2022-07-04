@@ -5,13 +5,15 @@ import {useSelector} from "react-redux";
 import CategoriesMenuSection from "./sections/categories/categories";
 // interfaces
 import {ICategory} from "../../../interfaces/categories";
+import {IState} from "../../../redux/store";
 // icons/photos
 import user from "../../images/user.png";
 
 
+
 const LeftMenu: React.FC = () => {
 
-    const categories: Array<ICategory> = useSelector((state: any) => state.categories.categories);
+    const categories: Array<ICategory> = useSelector((state: IState) => state.categories.categories);
 
     return (
         <div className={'left-menu'}>

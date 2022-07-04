@@ -1,12 +1,15 @@
 import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import './home-page.scss';
 // components
 import ACarousel from "../../reusable-components/ACarousel/ACarousel";
-import {useDispatch, useSelector} from "react-redux";
-import {IDispatchInterface} from "../../../interfaces/global";
-import {getAllCategories} from "../../../redux/actions/categories";
 import ACard from "../../reusable-components/ACard/ACard";
+// actions
+import {getAllCategories} from "../../../redux/actions/categories";
+// interfaces
+import {IDispatchInterface} from "../../../interfaces/global";
 import {ICategory} from "../../../interfaces/categories";
+import {IState} from "../../../redux/store";
 
 
 const carouselData = [
@@ -27,7 +30,7 @@ const carouselData = [
 const HomePage: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const categories = useSelector((state: any) => state.categories.categories);
+    const categories = useSelector((state: IState) => state.categories.categories);
 
     useEffect(() => {
         dispatch(getAllCategories());
