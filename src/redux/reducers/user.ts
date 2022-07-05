@@ -2,7 +2,9 @@ import {
     LOADING_USER,
     SET_USER,
     SET_AUTHENTICATED,
-    SET_UNAUTHENTICATED, SET_BASKET,
+    SET_UNAUTHENTICATED,
+    SET_BASKET,
+    SET_PURCHASED_PRODUCTS,
 } from "../types";
 // interfaces
 import {IProduct} from "../../interfaces/products";
@@ -30,11 +32,17 @@ interface ICredentials {
     last_name: string;
 }
 
+export interface IPurchasedProduct {
+    product: IProduct;
+    quantity: number;
+}
+
 export interface IUsersInitialState {
     authenticated: boolean;
     basket: Array<IBasketItemObject>;
     credentials: ICredentials;
     loading: boolean;
+    purchasedProducts: Array<IPurchasedProduct>;
 }
 
 
@@ -55,7 +63,8 @@ const initialState = {
         first_name: '',
         last_name: ''
     },
-    loading: false
+    loading: false,
+    purchasedProducts: [] as Array<IPurchasedProduct>
 };
 
 export default function (state: IUsersInitialState=initialState, action: any){
@@ -82,6 +91,11 @@ export default function (state: IUsersInitialState=initialState, action: any){
             return {
                 ...state,
                 basket: action.payload
+            }
+        case SET_PURCHASED_PRODUCTS:
+            return {
+                ...state,
+                purchasedProducts: action.payload
             }
         default: return state
     }

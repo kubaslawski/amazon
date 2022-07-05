@@ -1,25 +1,27 @@
-import {ChangeEvent, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import './basket-page.scss';
+import './purchased-products-page.scss';
 import {Link} from "react-router-dom";
 import {appURL} from "../../../App";
-// components
-import AButton from "../../reusable-components/AButton/AButton";
-// actions
-import {editBasket, getUserBasket, IBasketItem} from "../../../redux/actions/user";
+import {getUserPurchasedProducts} from "../../../redux/actions/user";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 import {IState} from "../../../redux/store";
-import {IBasketItemObject} from "../../../redux/reducers/user";
+import {IPurchasedProduct} from "../../../redux/reducers/user";
 
-const BasketPage: React.FC = () => {
+
+const PurchasedProductsPage: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
-    const basketItems: Array<IBasketItemObject> = useSelector((state: IState) => state.user.basket);
+    const purchasedProducts: Array<IPurchasedProduct> = useSelector((state: IState) => state.user.purchasedProducts);
+
+    useEffect(() => {
+        dispatch(getUserPurchasedProducts());
+    }, []);
 
     const countQuantity = () => {
         let totalQuantity = 0;
-        basketItems?.forEach((obj) => {
+        purchasedProducts?.forEach((obj) => {
             totalQuantity += obj.quantity
         })
         return totalQuantity;
@@ -27,53 +29,34 @@ const BasketPage: React.FC = () => {
 
     const countPrice = () => {
         let totalPrice = 0;
-        basketItems?.forEach((obj) => {
+        purchasedProducts?.forEach((obj) => {
             totalPrice += obj.quantity * obj.product.price
         })
         return totalPrice;
     }
 
-    useEffect(() => {
-        dispatch(getUserBasket());
-    }, [dispatch]);
-
-    const handleAdd = (e: ChangeEvent<HTMLInputElement>) => {
-        const basketItem: IBasketItem = {
-            product: parseInt(e.target.value),
-            quantity: 1
-        };
-        dispatch(editBasket(basketItem));
-    };
-    const handleRemove = (e: ChangeEvent<HTMLInputElement>) => {
-        const basketItem: IBasketItem = {
-            product: parseInt(e.target.value),
-            quantity: -1
-        };
-        dispatch(editBasket(basketItem));
-    };
-
     return (
-        <div className={'basket-page row'}>
-            <div className={'col-3'}/>
+        <div className={'row purchased-products-page'}>
+            <div className={'col-3'}></div>
             <div className={'col-6'}>
                 <table className={'global-table-1'}>
                     <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Actions</th>
-                        </tr>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
                     </thead>
                     <tbody>
-                    {basketItems?.map((obj: IBasketItemObject) => {
+                    {purchasedProducts?.map((obj: any) => {
                         return (
                             <tr key={obj.product.id}>
                                 <td>
                                     <Link
                                         className={'global-table-1__product-link'}
                                         to={{
-                                        pathname: `/product/${obj.product.id}`
+                                            pathname: `/product/${obj.product.id}`
                                         }}>
                                         <div className={'global-table-1__product-details'}>
                                             <p>{obj.product.name}</p>
@@ -94,15 +77,11 @@ const BasketPage: React.FC = () => {
                                     <p className={'p-center'}>{obj.quantity * obj.product.price} $</p>
                                 </td>
                                 <td>
-                                    <div className={'flex global-table-1__buttons'}>
-                                        <AButton text={'+'} onClick={handleAdd} value={obj.product.id}/>
-                                        <AButton text={'-'} onClick={handleRemove} value={obj.product.id}/>
-                                    </div>
                                 </td>
                             </tr>
                         )
                     })}
-                    {basketItems?.length > 0 && (
+                    {purchasedProducts?.length > 0 && (
                         <>
                             <tr>
                                 <td></td>
@@ -110,7 +89,7 @@ const BasketPage: React.FC = () => {
                                     Total Items:
                                 </th>
                                 <th>
-                                    Checkout
+                                    Money Spent:
                                 </th>
                                 <td></td>
                             </tr>
@@ -118,26 +97,15 @@ const BasketPage: React.FC = () => {
                                 <td></td>
                                 <td>{countQuantity()}</td>
                                 <td>{countPrice()} $</td>
-                                <td>
-                                    <Link to={{
-                                        pathname: `/checkout`
-                                    }}>
-                                        <AButton
-                                        text={'Checkout'}
-                                        />
-                                    </Link>
-                                </td>
                             </tr>
                         </>
                     )}
-
                     </tbody>
                 </table>
             </div>
-            <div className={'col-3'}/>
+            <div className={'col-3'}></div>
         </div>
-
     )
 }
 
-export default BasketPage;
+export default PurchasedProductsPage;

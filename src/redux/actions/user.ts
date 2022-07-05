@@ -5,7 +5,8 @@ import {
     CLEAR_ERRORS,
     LOADING_USER,
     SET_UNAUTHENTICATED,
-    SET_BASKET
+    SET_BASKET,
+    SET_PURCHASED_PRODUCTS
 } from "../types";
 // external libraries
 import axios from 'axios';
@@ -74,11 +75,21 @@ export const getUserData = () => (dispatch: any) => {
     })
     axios.get(`/token/verify_user/`)
         .then((res) => {
-            console.log(res.data)
             dispatch({
                 type: SET_USER,
                 payload: res.data
             })
         })
         .catch((err) => console.log(err));
+}
+
+export const getUserPurchasedProducts = () => (dispatch: IDispatchInterface) => {
+    axios.get(`/my-purchased-products/`)
+        .then((res) => dispatch({
+            type: SET_PURCHASED_PRODUCTS,
+            payload: res.data
+        }))
+        .catch((err) => {
+            console.log(err)
+        })
 }

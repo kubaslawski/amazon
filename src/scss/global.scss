@@ -82,3 +82,41 @@
     text-decoration: none;
   }
 }
+
+// table 1
+
+.global-table-1 {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.global-table-1 td, .global-table-1 th {
+  border: 1px solid $grey;
+  padding: 8px;
+}
+
+.global-table-1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: $charcoal;
+  color: white;
+  text-align: center;
+}
+
+.global-table-1__product-details {
+  text-align: center;
+}
+
+.global-table-1__buttons {
+  > .a__button {
+    margin-right: 5%;
+  }
+}
+
+.global-table-1__product-image {
+  max-width: 100px;
+}
+
+.global-table-1__product-link {
+  text-decoration: none;
+}
