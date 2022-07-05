@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./user-panel.scss"
 // ext.
@@ -13,20 +13,32 @@ import {IDispatchInterface} from "../../../../interfaces/global";
 import {IState} from "../../../../redux/store";
 // actions
 import {logoutUser} from "../../../../redux/actions/user";
+import {keyboardKey} from "../../../variables";
 
 
 const UserPanel: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const user = useSelector((state: IState) => state.user);
-
     const {first_name, last_name} = user.credentials;
 
     const [open, setOpen] = useState<boolean>(false);
+    useEffect(() =>{
+        document.addEventListener("keyup", escHandler, false);
+        return () => {
+            document.removeEventListener('keyup', escHandler, false)
+        }
+    }, []);
 
     const handleOpen = () => {setOpen(prevState => !prevState)};
     const handleLogout = () => {
         dispatch(logoutUser());
+    }
+
+    const escHandler = (event: KeyboardEvent) => {
+        if(event.key === keyboardKey.escape){
+            setOpen(false);
+        }
     }
 
     return (
