@@ -93,3 +93,15 @@ export const getUserPurchasedProducts = () => (dispatch: IDispatchInterface) => 
             console.log(err)
         })
 }
+
+export const checkoutBasket = (navigate: any) => (dispatch: IDispatchInterface) => {
+    axios.get(`/checkout/`)
+        .then(() => {
+            dispatch({
+                type: SET_BASKET,
+                payload: []
+            })
+            navigate('/my-purchases/')
+        })
+        .catch((err) => console.log(err));
+}

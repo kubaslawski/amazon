@@ -44,8 +44,6 @@ if(token){
     }
 }
 
-
-
 function App() {
 
     return (

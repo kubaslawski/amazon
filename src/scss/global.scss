@@ -120,3 +120,19 @@
 .global-table-1__product-link {
   text-decoration: none;
 }
+
+// messages
+.message-1 {
+  text-align: center;
+  font-size: 1.4rem;
+  > img {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.message-2 {
+  text-align: center;
+}
