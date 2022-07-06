@@ -26,3 +26,10 @@ export interface IProduct {
     photo: string;
     product_rating: IProductRate;
 }
+
+export interface IRateData {
+    author: number;
+    product: string;
+    content: string;
+    rate: number;
+}

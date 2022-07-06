@@ -6,7 +6,7 @@ import './rate-product-page.scss';
 import ProductImage from "../product-page/helpers/product-image";
 import ProductDetails from "../product-page/helpers/product-details";
 // forms
-import RateProductForm from "../../forms/rate-product/rate-product";
+import RateProductForm from "../../forms/rate-product/rate-product-form";
 // actions
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
@@ -34,7 +34,7 @@ const RateProductPage: React.FC = () => {
             <div className={'col-1'}/>
             <div className={'col-10'}>
                 <div className={'row'}>
-                    <RateProductForm/>
+                    {productId && <RateProductForm productId={productId}/>}
                     <ProductImage photo={product.photo}/>
                     <ProductDetails product={product}/>
                 </div>

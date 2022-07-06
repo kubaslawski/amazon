@@ -1,8 +1,8 @@
-import {ADD_PRODUCT, GET_ALL_PRODUCTS, GET_PRODUCT} from "../types";
+import {ADD_PRODUCT, ADD_RATE, GET_ALL_PRODUCTS, GET_PRODUCT, SET_ERRORS} from "../types";
 import axios from "axios";
 // interfaces
 import {IDispatchInterface} from "../../interfaces/global";
-import {IAddProduct} from "../../interfaces/products";
+import {IAddProduct, IRateData} from "../../interfaces/products";
 
 export const getAllProducts = () => (dispatch: IDispatchInterface) => {
     axios.get('/products/')
@@ -57,4 +57,20 @@ export const addProduct = (productData: IAddProduct) => (dispatch: IDispatchInte
             console.log(err);
         })
 
+}
+
+export const rateProduct = (rateData: IRateData) => (dispatch: IDispatchInterface) => {
+    axios.post(`/products/rate/`, rateData)
+        .then((res) => {
+            dispatch({
+                type: ADD_RATE,
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data['errors']
+            })
+        })
 }

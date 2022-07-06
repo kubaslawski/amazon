@@ -29,7 +29,7 @@ const AStarRatingInput: React.FC<IAStarRatingInput> = ({
     const getColor = (index: any) => {
         if(hoverRating >= index){
             return color.filled
-        } else if(!hoverRating && rating >= index){
+        } else if(!hoverRating && rating >=     index){
             return color.filled;
         }
         return color.unfilled
@@ -42,7 +42,7 @@ const AStarRatingInput: React.FC<IAStarRatingInput> = ({
             .map((idx) => (
                 <FontAwesomeIcon
                     key={idx}
-                    className={'cursor-pointer'}
+                    className={'cursor-pointer star-rating-input__icon'}
                     icon={faStar}
                     onClick={() => onRating(idx)}
                     style={{color: getColor(idx)}}
