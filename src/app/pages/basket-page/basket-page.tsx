@@ -57,7 +57,6 @@ const BasketPage: React.FC = () => {
 
     const handleCheckout = () => {
         dispatch(checkoutBasket(navigate));
-
     }
 
     return (

@@ -136,3 +136,9 @@
 .message-2 {
   text-align: center;
 }
+
+.cursor-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}

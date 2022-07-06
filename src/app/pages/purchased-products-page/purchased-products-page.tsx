@@ -4,10 +4,13 @@ import './purchased-products-page.scss';
 import {Link} from "react-router-dom";
 import {appURL} from "../../../App";
 import {getUserPurchasedProducts} from "../../../redux/actions/user";
+// components
+import AButton from "../../reusable-components/AButton/AButton";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
 import {IState} from "../../../redux/store";
 import {IPurchasedProduct} from "../../../redux/reducers/user";
+
 
 
 const PurchasedProductsPage: React.FC = () => {
@@ -77,6 +80,13 @@ const PurchasedProductsPage: React.FC = () => {
                                     <p className={'p-center'}>{obj.quantity * obj.product.price} $</p>
                                 </td>
                                 <td>
+                                    <Link to={{
+                                        pathname: `/rate-product/${obj.product.id}`,
+                                    }}>
+                                        <AButton
+                                            text={'Rate Product'}
+                                        />
+                                    </Link>
                                 </td>
                             </tr>
                         )
