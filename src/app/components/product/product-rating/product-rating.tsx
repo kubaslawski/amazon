@@ -1,10 +1,13 @@
 import React from "react";
 import "./product-rating.scss";
 // icons
-import fullStar from '../../../../icons/full-star.png';
-import emptyStar from '../../../../icons/empty-star.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 // interfaces
 import {IProductRate} from "../../../../interfaces/products";
+
+const filled = "#f5eb3b" ;
+const unfilled = "#dcdcdc";
 
 interface IProductRating {
     rate: IProductRate
@@ -19,13 +22,23 @@ const ProductRating: React.FC<IProductRating> = ({rate}) => {
 
     const fullStars = [...Array(fullStarsLen)].map((e, i) => {
         return (
-            <img key={`full-star rating ${i}`} className='star-image' src={fullStar} alt='star'/>
+            <FontAwesomeIcon
+                key={i}
+                className={'star-rating-input__icon'}
+                icon={faStar}
+                style={{color: filled}}
+            />
         )
     })
 
     const emptyStars = [...Array(emptyStarsLen)].map((e, i) => {
         return (
-            <img key={`empty-star rating ${i}`} className='star-image' src={emptyStar} alt='star'/>
+            <FontAwesomeIcon
+                key={i}
+                className={'star-rating-input__icon'}
+                icon={faStar}
+                style={{color: unfilled}}
+            />
         )
     })
 
