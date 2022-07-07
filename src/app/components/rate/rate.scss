@@ -1,0 +1,8 @@
+@import '../../../scss/variables';
+
+.rate {
+  margin-top: 25px;
+  > .rate-details {
+    border: $grey-border;
+  }
+}

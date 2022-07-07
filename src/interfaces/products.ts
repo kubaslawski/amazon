@@ -15,6 +15,19 @@ export interface IAddProduct {
     photo: string;
 }
 
+export interface IRate {
+    id: number;
+    author: {
+        id: number;
+        email: string;
+        first_name: string;
+        last_name: string;
+    },
+    content: string;
+    created: string;
+    rate: number;
+}
+
 export interface IProduct {
     id: number;
     category: ICategory;
@@ -25,6 +38,10 @@ export interface IProduct {
     price: number;
     photo: string;
     product_rating: IProductRate;
+}
+
+export interface ISingleProduct extends IProduct {
+    rates: Array<IRate>
 }
 
 export interface IRateData {

@@ -1,11 +1,11 @@
 import {ADD_PRODUCT, GET_ALL_PRODUCTS, GET_PRODUCT} from "../types";
-import {IProduct} from "../../interfaces/products";
+import {IProduct, IRate, ISingleProduct} from "../../interfaces/products";
 import {IAction} from "../../interfaces/global";
 import {ISubCategory} from "../../interfaces/categories";
 
 export interface IProductsInitialState {
     products: Array<IProduct>;
-    product: IProduct;
+    product: ISingleProduct;
     errors: Array<any>;
 }
 
@@ -32,7 +32,8 @@ const initialState: IProductsInitialState = {
         product_rating: {
             avg_rate: 0,
             rate_count: 0
-        }
+        },
+        rates: [] as Array<IRate>
     },
     errors: [] as Array<any>
 }

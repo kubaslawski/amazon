@@ -6,13 +6,14 @@ import {useParams} from "react-router-dom";
 import {getProduct} from "../../../redux/actions/products";
 // interfaces
 import {IDispatchInterface} from "../../../interfaces/global";
-import {IProduct} from "../../../interfaces/products";
+import {ISingleProduct} from "../../../interfaces/products";
 import {IState} from "../../../redux/store";
 // components
 import ProductDelivery from "./helpers/product-delivery";
 import ProductHeader from "./helpers/product-header";
 import ProductDetails from "./helpers/product-details";
 import ProductImage from "./helpers/product-image";
+import Rate from "../../components/rate/rate";
 
 const ProductPage: React.FC = () => {
 
@@ -20,16 +21,14 @@ const ProductPage: React.FC = () => {
     const id = params['id'];
 
     const dispatch: IDispatchInterface = useDispatch();
-    const product: IProduct = useSelector((state: IState) => state.products.product);
+    const product: ISingleProduct = useSelector((state: IState) => state.products.product);
 
     useEffect(() => {
         if (id) {
             dispatch(getProduct(id));
         }
-        return () => {
-        };
-    }, [id, dispatch])
-
+        return () => {};
+    }, [id, dispatch]);
 
     return (
         <div className='product-page'>
@@ -47,6 +46,20 @@ const ProductPage: React.FC = () => {
                             </div>
                             <div className='col-1'/>
                         </div>
+                        {product.rates && (
+                            product.rates.map((rate) => {
+                                return (
+                                    <Rate
+                                        key={rate.id}
+                                        id={rate.id}
+                                        author={rate.author}
+                                        content={rate.content}
+                                        created={rate.created}
+                                        rate={rate.rate}
+                                    />
+                                )
+                            })
+                        )}
                     </>
                 )}
         </div>
