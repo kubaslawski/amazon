@@ -2,7 +2,7 @@
 
 .left-menu {
   overflow-y: scroll;
-  position: absolute;
+  position: fixed;
   background: white;
   top: 0;
   left: 0;
@@ -64,7 +64,7 @@
 }
 
 .left_menu__close-icon {
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 410px;
   width: 25px;

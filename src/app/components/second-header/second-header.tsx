@@ -9,6 +9,7 @@ import close from "../../../icons/close-grey.png";
 import LeftMenu from "../left-menu/left-menu";
 // interfaces
 import {IState} from "../../../redux/store";
+import {keyboardKey} from "../../variables";
 
 const SecondHeader: React.FC = () => {
 
@@ -17,11 +18,17 @@ const SecondHeader: React.FC = () => {
 
     useEffect(() => {
         if(isOpen){
-            document.body.style.overflowY = 'hidden';
+            document.addEventListener('keyup', escHandler, false)
         } else {
-            document.body.style.overflowY = 'auto';
         }
+        return () => {document.removeEventListener('keyup', escHandler, false)}
     }, [isOpen])
+
+    const escHandler = (event: KeyboardEvent) => {
+        if(event.key === keyboardKey.escape){
+            setIsOpen(false);
+        }
+    }
 
     return (
         <>
