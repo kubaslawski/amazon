@@ -35,7 +35,7 @@ const PurchasedProductsPage: React.FC = () => {
         purchasedProducts?.forEach((obj) => {
             totalPrice += obj.quantity * obj.product.price
         })
-        return totalPrice;
+        return totalPrice.toFixed(2);
     }
 
     return (
@@ -77,14 +77,14 @@ const PurchasedProductsPage: React.FC = () => {
                                     <p className={'p-center'}>{obj.quantity}</p>
                                 </td>
                                 <td>
-                                    <p className={'p-center'}>{obj.quantity * obj.product.price} $</p>
+                                    <p className={'p-center'}>{(obj.quantity * obj.product.price).toFixed(2)} $</p>
                                 </td>
                                 <td>
                                     <Link to={{
                                         pathname: `/rate-product/${obj.product.id}`,
                                     }}>
                                         <AButton
-                                            text={'Rate Product'}
+                                            text={'Rate'}
                                         />
                                     </Link>
                                 </td>
