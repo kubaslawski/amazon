@@ -4,7 +4,7 @@ import './second-header.scss';
 import {Link} from "react-router-dom";
 // images / icons
 import menu from "../../images/menu-white.png";
-import close from "../../../icons/close-grey.png";
+import close from "../../../icons/close-black.png";
 // components
 import LeftMenu from "../left-menu/left-menu";
 // interfaces
