@@ -88,8 +88,16 @@ export default function (state: IUsersInitialState=initialState, action: any){
                 credentials: action.payload
             }
         case SET_BASKET:
+            let basket_count = 0;
+            action.payload.forEach((obj: IBasketItemObject) => {
+                basket_count += obj.quantity
+            })
             return {
                 ...state,
+                credentials: {
+                    ...state.credentials,
+                    basket_count: basket_count
+                },
                 basket: action.payload
             }
         case SET_PURCHASED_PRODUCTS:

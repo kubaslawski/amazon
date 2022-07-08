@@ -10,19 +10,18 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 // react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
+// components
+import Header from "./app/components/header/header";
+import SecondHeader from "./app/components/second-header/second-header";
+// actions
+import {getUserData} from "./redux/actions/user";
+import {SET_AUTHENTICATED} from "./redux/types";
 // pages
 import ProductsPage from "./app/pages/products-page/products-page";
 import AddProductPage from "./app/pages/add-product/add-product";
 import ProductPage from "./app/pages/product-page/product-page";
-// components
-import Header from "./app/components/header/header";
-import SecondHeader from "./app/components/second-header/second-header";
 import RegisterPage from "./app/pages/auth/register-page";
 import LoginPage from "./app/pages/auth/login-page";
-// actions
-import {getUserData} from "./redux/actions/user";
-// interfaces
-import {SET_AUTHENTICATED} from "./redux/types";
 import BasketPage from "./app/pages/basket-page/basket-page";
 import HomePage from "./app/pages/home-page/home-page";
 import PurchasedProductsPage from "./app/pages/purchased-products-page/purchased-products-page";

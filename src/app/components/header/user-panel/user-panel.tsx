@@ -15,7 +15,6 @@ import {IState} from "../../../../redux/store";
 import {logoutUser} from "../../../../redux/actions/user";
 import {keyboardKey} from "../../../variables";
 
-
 const UserPanel: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();
@@ -31,6 +30,7 @@ const UserPanel: React.FC = () => {
     }, []);
 
     const handleOpen = () => {setOpen(prevState => !prevState)};
+    const handleClose = () => {setOpen(false)};
     const handleLogout = () => {
         dispatch(logoutUser());
     }
@@ -86,6 +86,9 @@ const UserPanel: React.FC = () => {
                         </div>
                         <div className="user-panel__right">
                             <p className="global-p__title">Your Account</p>
+                            <Link to={'/profile'} onClick={handleClose}>
+                                <p className="global-p__common">Edit profile</p>
+                            </Link>
                             <p className="global-p__common">Orders</p>
                             <p className="global-p__common">Recommendations</p>
                             <p className="global-p__common">Browsing History</p>
@@ -93,8 +96,6 @@ const UserPanel: React.FC = () => {
                             <p className="global-p__common">Video Purchases & Rentails</p>
                             <p className="global-p__common">Kindle Unlimited</p>
                             <p className="global-p__common">Content & Devices</p>
-                            <p className="global-p__common">Subscribe & Save Items</p>
-                            <p className="global-p__common">Memberships & Subscriptions</p>
                             <p className="global-p__common">Music Library</p>
                         </div>
                     </div>

@@ -7,7 +7,6 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const ADD_RATE = "ADD_RATE";
-export const GET_PRODUCT_RATE = "GET_PRODUCT_RATE";
 
 // users
 export const SET_USER = "SET_USER";
