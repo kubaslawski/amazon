@@ -33,7 +33,7 @@ const BasketPage: React.FC = () => {
         basketItems?.forEach((obj) => {
             totalPrice += obj.quantity * obj.product.price
         })
-        return totalPrice;
+        return totalPrice.toFixed(2);
     }
 
     useEffect(() => {
@@ -113,7 +113,7 @@ const BasketPage: React.FC = () => {
                                             <p className={'p-center'}>{obj.quantity}</p>
                                         </td>
                                         <td>
-                                            <p className={'p-center'}>{obj.quantity * obj.product.price} $</p>
+                                            <p className={'p-center'}>{(obj.quantity * obj.product.price).toFixed(2)} $</p>
                                         </td>
                                         <td>
                                             <div className={'flex global-table-1__buttons'}>
