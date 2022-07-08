@@ -49,7 +49,6 @@ function App() {
     return (
         <Router>
             <div className="app">
-
                 <Provider store={store}>
                     <Header/>
                     <SecondHeader/>

@@ -1,4 +1,14 @@
+.home-page {
+  > .slider {
+    min-width: 1300px;
+  }
+}
+
 .home-page__content {
   position: absolute;
   top: 360px;
+}
+
+.home-page__content {
+  min-width: 1300px;
 }
