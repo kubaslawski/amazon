@@ -22,7 +22,7 @@ const ACarousel: React.FC<IACarousel> = ({slides}) => {
     };
 
     return (
-        <section className={'slider'}>
+        <section className={'a-carousel'}>
             <img src={prev} className={'left arrow'} onClick={prevSlide} alt={'left-arrow'}/>
             <img src={next} className={'right arrow'} onClick={nextSlide} alt={'right-arrow'}/>
             {slides.map((slide: any, index: any) => {
