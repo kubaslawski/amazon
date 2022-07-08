@@ -31,7 +31,7 @@
   border-color: $button-filled-border;
   box-shadow: 0 1px 0 rgb(255 255 255 / 40%) inset;
   color: #111;
-  width: 50%;
+  width: 50% !important;
   height: 30px;
   border-radius: 2px;
 }
