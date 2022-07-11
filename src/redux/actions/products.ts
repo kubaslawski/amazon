@@ -4,8 +4,8 @@ import axios from "axios";
 import {IDispatchInterface} from "../../interfaces/global";
 import {IAddProduct, IRateData} from "../../interfaces/products";
 
-export const getAllProducts = () => (dispatch: IDispatchInterface) => {
-    axios.get('/products/')
+export const getAllProducts = () => async (dispatch: IDispatchInterface) => {
+    return await axios.get('/products/')
         .then((res) => {
             dispatch({
                 type: GET_ALL_PRODUCTS,
@@ -17,8 +17,8 @@ export const getAllProducts = () => (dispatch: IDispatchInterface) => {
         })
 }
 
-export const getCategoryProducts = (categoryId: string) => (dispatch: IDispatchInterface) => {
-    axios.get(`/products/category/${categoryId}/`)
+export const getCategoryProducts = (categoryId: string) => async (dispatch: IDispatchInterface) => {
+    return await axios.get(`/products/category/${categoryId}/`)
         .then((res) => {
             dispatch({
                 type: GET_ALL_PRODUCTS,
@@ -28,8 +28,8 @@ export const getCategoryProducts = (categoryId: string) => (dispatch: IDispatchI
         .catch((err) => console.log(err))
 }
 
-export const getProduct = (id: string) => (dispatch: IDispatchInterface) => {
-    axios.get(`/products/${id}/`)
+export const getProduct = (id: string) => async (dispatch: IDispatchInterface) => {
+    return await axios.get(`/products/${id}/`)
         .then((res) => {
             dispatch({
                 type: GET_PRODUCT,
@@ -41,8 +41,8 @@ export const getProduct = (id: string) => (dispatch: IDispatchInterface) => {
         })
 }
 
-export const addProduct = (productData: IAddProduct) => (dispatch: IDispatchInterface) => {
-    axios.post('/products/', productData, {
+export const addProduct = (productData: IAddProduct) => async (dispatch: IDispatchInterface) => {
+    return await axios.post('/products/', productData, {
         headers: {
             "Content-type": "multipart/form-data"
         }
@@ -59,8 +59,8 @@ export const addProduct = (productData: IAddProduct) => (dispatch: IDispatchInte
 
 }
 
-export const rateProduct = (rateData: IRateData) => (dispatch: IDispatchInterface) => {
-    axios.post(`/products/rate/`, rateData)
+export const rateProduct = (rateData: IRateData) => async (dispatch: IDispatchInterface) => {
+    return await axios.post(`/products/rate/`, rateData)
         .then((res) => {
             dispatch({
                 type: ADD_RATE,

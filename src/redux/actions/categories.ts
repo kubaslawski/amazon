@@ -5,8 +5,8 @@ import {ICategory} from "../../interfaces/categories";
 
 
 
-export const getAllCategories = () => (dispatch: IDispatchInterface) => {
-    axios.get('/categories/')
+export const getAllCategories = () => async (dispatch: IDispatchInterface) => {
+    return await axios.get('/categories/')
         .then((res) => {
             dispatch({
                 type: GET_ALL_CATEGORIES,
@@ -21,8 +21,8 @@ export const getAllCategories = () => (dispatch: IDispatchInterface) => {
         })
 }
 
-export const addCategory = (category: ICategory) => (dispatch: IDispatchInterface) => {
-    axios.post('/category/', category)
+export const addCategory = (category: ICategory) => async (dispatch: IDispatchInterface) => {
+    return await axios.post('/category/', category)
         .then((res) => {
             dispatch({
                 type: ADD_CATEGORY,

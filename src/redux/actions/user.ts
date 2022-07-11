@@ -19,9 +19,9 @@ export interface IBasketItem {
     quantity: number;
 }
 
-export const loginUser = (userData: IAuth, navigate:any) => (dispatch: IDispatchInterface) => {
+export const loginUser = (userData: IAuth, navigate:any) => async (dispatch: IDispatchInterface) => {
     dispatch({type: LOADING_UI});
-    axios.post('/token/', userData)
+    return await axios.post('/token/', userData)
         .then((res) => {
             setAuthorizationToken(res.data.access);
             dispatch({type: CLEAR_ERRORS});
@@ -47,8 +47,8 @@ const setAuthorizationToken = (token:string) => {
     axios.defaults.headers.common['Authorization'] = bearerToken;
 }
 
-export const getUserBasket = () => (dispatch: IDispatchInterface) => {
-    axios.get('/basket/')
+export const getUserBasket = () => async (dispatch: IDispatchInterface) => {
+    return await axios.get('/basket/')
         .then((res) => {
             dispatch({
                 type: SET_BASKET,
@@ -58,8 +58,8 @@ export const getUserBasket = () => (dispatch: IDispatchInterface) => {
         .catch((err) => console.log(err));
 }
 
-export const editBasket = (basketItem: IBasketItem) => (dispatch: IDispatchInterface) => {
-    axios.post('/basket/', basketItem)
+export const editBasket = (basketItem: IBasketItem) => async (dispatch: IDispatchInterface) => {
+    return await axios.post('/basket/', basketItem)
         .then((res) => {
             dispatch({
                 type: SET_BASKET,
@@ -69,11 +69,11 @@ export const editBasket = (basketItem: IBasketItem) => (dispatch: IDispatchInter
         .catch((err) => console.log(err));
 }
 
-export const getUserData = () => (dispatch: any) => {
+export const getUserData = () => async (dispatch: any) => {
     dispatch({
         type: LOADING_USER
     })
-    axios.get(`/token/verify_user/`)
+    return await axios.get(`/token/verify_user/`)
         .then((res) => {
             dispatch({
                 type: SET_USER,
@@ -83,8 +83,8 @@ export const getUserData = () => (dispatch: any) => {
         .catch((err) => console.log(err));
 }
 
-export const getUserPurchasedProducts = () => (dispatch: IDispatchInterface) => {
-    axios.get(`/my-purchased-products/`)
+export const getUserPurchasedProducts = () => async (dispatch: IDispatchInterface) => {
+    return await axios.get(`/my-purchased-products/`)
         .then((res) => dispatch({
             type: SET_PURCHASED_PRODUCTS,
             payload: res.data
@@ -94,8 +94,8 @@ export const getUserPurchasedProducts = () => (dispatch: IDispatchInterface) => 
         })
 }
 
-export const checkoutBasket = (navigate: any) => (dispatch: IDispatchInterface) => {
-    axios.get(`/checkout/`)
+export const checkoutBasket = (navigate: any) => async (dispatch: IDispatchInterface) => {
+    return await axios.get(`/checkout/`)
         .then(() => {
             dispatch({
                 type: SET_BASKET,
