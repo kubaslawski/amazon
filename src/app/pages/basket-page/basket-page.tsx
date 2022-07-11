@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect} from "react";
+import {ChangeEvent, FunctionComponent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './basket-page.scss';
 import {Link, useNavigate} from "react-router-dom";
@@ -13,8 +13,12 @@ import {IState} from "../../../redux/store";
 import {IBasketItemObject} from "../../../redux/reducers/user";
 // icons
 import sad_face from '../../../icons/sad_face.png';
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const BasketPage: React.FC = () => {
+interface IBasketPage extends IBaseLoadableComponent {}
+
+const BasketPage: FunctionComponent<IBasketPage> = ({setLoading}) => {
 
     const navigate = useNavigate();
     const dispatch: IDispatchInterface = useDispatch();
@@ -37,22 +41,33 @@ const BasketPage: React.FC = () => {
     }
 
     useEffect(() => {
-        dispatch(getUserBasket());
-    }, [dispatch]);
+        const fetchData = async () => {
+            setLoading(true);
+            dispatch(getUserBasket());
+            setLoading(false);
+        }
+        fetchData();
+    }, []);
+
+    const postData = async (basketItem: IBasketItem) => {
+        setLoading(true);
+        await dispatch(editBasket(basketItem));
+        setLoading(false);
+    }
 
     const handleAdd = (e: ChangeEvent<HTMLInputElement>) => {
         const basketItem: IBasketItem = {
             product: parseInt(e.target.value),
             quantity: 1
         };
-        dispatch(editBasket(basketItem));
+        postData(basketItem);
     };
     const handleRemove = (e: ChangeEvent<HTMLInputElement>) => {
         const basketItem: IBasketItem = {
             product: parseInt(e.target.value),
             quantity: -1
         };
-        dispatch(editBasket(basketItem));
+        postData(basketItem);
     };
 
     const handleCheckout = () => {
@@ -162,4 +177,4 @@ const BasketPage: React.FC = () => {
     )
 }
 
-export default BasketPage;
+export default isLoadingHOC(BasketPage);

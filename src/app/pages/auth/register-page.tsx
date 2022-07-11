@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, FunctionComponent, useState} from "react";
 import './auth.scss';
 // ext libraries
 import {Link} from "react-router-dom";
@@ -9,8 +9,12 @@ import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
 // interfaces
 import {ICreateUser} from "../../../interfaces/users";
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const RegisterPage: React.FC = () => {
+interface IRegisterPage extends IBaseLoadableComponent {}
+
+const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
 
     const [userData, setUserData] = useState<ICreateUser>({
         email: '',
@@ -92,4 +96,4 @@ const RegisterPage: React.FC = () => {
     )
 }
 
-export default RegisterPage;
+export default isLoadingHOC(RegisterPage);

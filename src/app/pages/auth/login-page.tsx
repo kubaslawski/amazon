@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, FunctionComponent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './auth.scss';
 // ext libraries
@@ -14,8 +14,10 @@ import {IAuth} from "../../../interfaces/users";
 // actions
 import {loginUser} from "../../../redux/actions/user";
 import {IDispatchInterface} from "../../../interfaces/global";
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const LoginPage: React.FC = () => {
+const LoginPage: FunctionComponent<IBaseLoadableComponent> = ({setLoading}) => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const navigate = useNavigate();
@@ -34,7 +36,12 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
-        dispatch(loginUser(userData, navigate));
+        const postData = async () => {
+            setLoading(true);
+            await dispatch(loginUser(userData, navigate));
+            setLoading(false);
+        }
+        postData();
     };
 
     return (
@@ -107,4 +114,4 @@ const LoginPage: React.FC = () => {
     )
 }
 
-export default LoginPage;
+export default isLoadingHOC(LoginPage);

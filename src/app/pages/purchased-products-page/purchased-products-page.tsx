@@ -1,8 +1,9 @@
-import React, {useEffect} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './purchased-products-page.scss';
 import {Link} from "react-router-dom";
 import {appURL} from "../../../App";
+// actions
 import {getUserPurchasedProducts} from "../../../redux/actions/user";
 // components
 import AButton from "../../reusable-components/AButton/AButton";
@@ -10,16 +11,24 @@ import AButton from "../../reusable-components/AButton/AButton";
 import {IDispatchInterface} from "../../../interfaces/global";
 import {IState} from "../../../redux/store";
 import {IPurchasedProduct} from "../../../redux/reducers/user";
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
 
+interface IPurchasedProductsPage extends IBaseLoadableComponent {}
 
-const PurchasedProductsPage: React.FC = () => {
+const PurchasedProductsPage: FunctionComponent<IPurchasedProductsPage> = ({setLoading}) => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const purchasedProducts: Array<IPurchasedProduct> = useSelector((state: IState) => state.user.purchasedProducts);
 
     useEffect(() => {
-        dispatch(getUserPurchasedProducts());
+        const fetchData = async () => {
+            setLoading(true);
+            await dispatch(getUserPurchasedProducts());
+            setLoading(false);
+        }
+        fetchData();
     }, []);
 
     const countQuantity = () => {
@@ -118,4 +127,4 @@ const PurchasedProductsPage: React.FC = () => {
     )
 }
 
-export default PurchasedProductsPage;
+export default isLoadingHOC(PurchasedProductsPage);

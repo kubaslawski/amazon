@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./products-page.scss";
 import {useParams} from "react-router-dom";
@@ -10,8 +10,14 @@ import ProductCard from "../../components/product/product-card/product-card";
 import {IProduct} from "../../../interfaces/products";
 import {IDispatchInterface} from "../../../interfaces/global";
 import {IState} from "../../../redux/store";
+// HOC
+import isLoadingHOC, {IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const ProductsPage: React.FC = () => {
+interface IProductsPage extends IBaseLoadableComponent {
+
+}
+
+const ProductsPage: FunctionComponent<IProductsPage> = ({setLoading}) => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const params = useParams();
@@ -20,11 +26,16 @@ const ProductsPage: React.FC = () => {
     const {id} = params;
 
     useEffect(() => {
-        if(id){
-            dispatch(getCategoryProducts(id));
-        } else {
-            dispatch(getAllProducts());
+        const fetchData = async () => {
+            setLoading(true);
+            if(id){
+                await dispatch(getCategoryProducts(id));
+            } else {
+                await dispatch(getAllProducts());
+            }
+            setLoading(false);
         }
+        fetchData();
     }, [dispatch, id]);
 
     return (
@@ -36,4 +47,4 @@ const ProductsPage: React.FC = () => {
     )
 }
 
-export default ProductsPage;
+export default isLoadingHOC(ProductsPage);

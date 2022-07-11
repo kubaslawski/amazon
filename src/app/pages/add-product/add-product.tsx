@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import './add-product-page.scss';
 // components
 import AddProduct from "../../forms/add-product/addProduct";
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const AddProductPage: React.FC = () => {
+interface IAddProductPage extends IBaseLoadableComponent {}
+
+const AddProductPage: FunctionComponent<IAddProductPage> = ({setLoading}) => {
     return (
         <div className='add-product-page'>
             <AddProduct/>
@@ -11,4 +15,4 @@ const AddProductPage: React.FC = () => {
     )
 }
 
-export default AddProductPage;
+export default isLoadingHOC(AddProductPage);

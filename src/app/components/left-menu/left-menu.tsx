@@ -12,10 +12,6 @@ import {IDispatchInterface} from "../../../interfaces/global";
 // icons/photos
 import user from "../../images/user.png";
 
-
-
-
-
 const LeftMenu: React.FC = () => {
 
     const dispatch: IDispatchInterface = useDispatch();

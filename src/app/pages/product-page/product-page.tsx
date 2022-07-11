@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import './product-page.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
@@ -14,21 +14,30 @@ import ProductHeader from "./helpers/product-header";
 import ProductDetails from "./helpers/product-details";
 import ProductImage from "./helpers/product-image";
 import Rate from "../../components/rate/rate";
+// HOC
+import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
 
-const ProductPage: React.FC = () => {
+interface IProductPage extends IBaseLoadableComponent {}
+
+const ProductPage: FunctionComponent<IProductPage> = ({setLoading}) => {
 
     const params = useParams();
-    const id = params['id'];
+    const id: string = params['id']!;
 
     const dispatch: IDispatchInterface = useDispatch();
     const product: ISingleProduct = useSelector((state: IState) => state.products.product);
 
     useEffect(() => {
+        const fetchData = async (id: string) => {
+            setLoading(true);
+            await dispatch(getProduct(id));
+            setLoading(false);
+        }
         if (id) {
-            dispatch(getProduct(id));
+            fetchData(id);
         }
         return () => {};
-    }, [id, dispatch]);
+    }, [id]);
 
     return (
         <div className='product-page'>
@@ -66,4 +75,4 @@ const ProductPage: React.FC = () => {
     )
 }
 
-export default ProductPage;
+export default isLoadingHOC(ProductPage);
