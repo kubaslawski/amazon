@@ -1,7 +1,8 @@
 import React, {ChangeEvent, FunctionComponent, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import './auth.scss';
 // ext libraries
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 // icons
 import amazonLogo from '../../../icons/amazon-logo.svg';
 // components
@@ -9,13 +10,19 @@ import AInput from "../../reusable-components/inputs/AInput/AInput.";
 import AButton from "../../reusable-components/AButton/AButton";
 // interfaces
 import {ICreateUser} from "../../../interfaces/users";
+import {IState} from "../../../redux/store";
 // HOC
 import {isLoadingHOC, IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
+import {IDispatchInterface} from "../../../interfaces/global";
+import {createUser} from "../../../redux/actions/user";
 
 interface IRegisterPage extends IBaseLoadableComponent {}
 
 const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
 
+    const dispatch: IDispatchInterface = useDispatch();
+    const navigate = useNavigate();
+    const errors = useSelector((state: IState) => state.ui.errors);
     const [userData, setUserData] = useState<ICreateUser>({
         email: '',
         password: '',
@@ -31,8 +38,13 @@ const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
 
     const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const postData = async () => {
+            setLoading(true);
+            await dispatch(createUser(userData, navigate));
+            setLoading(false);
+        }
+        postData();
     };
-
 
     return (
         <div className='register-page row'>
@@ -54,6 +66,7 @@ const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
                         noValidate={true}
                         className='auth-form'>
                         <AInput
+                            errors={errors?.email}
                             label='Email Address'
                             name='email'
                             onChange={handleChange}
@@ -61,6 +74,7 @@ const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
                             variant={'transparent'}
                         />
                         <AInput
+                            errors={errors?.password}
                             label='Password'
                             name='password'
                             onChange={handleChange}
@@ -70,6 +84,7 @@ const RegisterPage: FunctionComponent<IRegisterPage> = ({setLoading}) => {
                             variant={'transparent'}
                         />
                         <AInput
+                            errors={errors?.confirmPassword}
                             label='Confirm Password'
                             name='confirmPassword'
                             onChange={handleChange}

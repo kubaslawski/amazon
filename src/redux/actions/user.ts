@@ -12,15 +12,25 @@ import {
 import axios from 'axios';
 // interfaces
 import {IDispatchInterface} from "../../interfaces/global";
-import {IAuth} from "../../interfaces/users";
+import {IAuth, ICreateUser} from "../../interfaces/users";
 
 export interface IBasketItem {
     product: number;
     quantity: number;
 }
 
+export const createUser = (userData: ICreateUser, navigate: any) => async (dispatch: IDispatchInterface) => {
+    return await axios.post('/create-user/', userData)
+        .then(() => {
+            navigate('/login')
+        })
+        .catch((err) => dispatch({
+            type: SET_ERRORS,
+            payload: err.response.data
+        }))
+}
+
 export const loginUser = (userData: IAuth, navigate:any) => async (dispatch: IDispatchInterface) => {
-    dispatch({type: LOADING_UI});
     return await axios.post('/token/', userData)
         .then((res) => {
             setAuthorizationToken(res.data.access);

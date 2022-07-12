@@ -19,7 +19,7 @@ const RateProductForm: React.FC<IRateProductForm> = ({productId}) => {
 
     const dispatch: IDispatchInterface = useDispatch();
     const author = useSelector((state: IState) => state.user.credentials.id);
-    const errors: Array<string> = useSelector((state: IState) => state.ui.errors);
+    const errors = useSelector((state: IState) => state.ui.errors);
 
     const [rateData, setRateData] = useState({
         author: author,
