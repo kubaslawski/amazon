@@ -7,7 +7,7 @@ export interface IBaseLoadableComponent {
 }
 
 export const isLoadingHOC = (WrappedComponent: React.FunctionComponent<IBaseLoadableComponent>) => (props: any) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const setLoadingState = (isComponentLoading: boolean) => {
         setIsLoading(isComponentLoading);
