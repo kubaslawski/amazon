@@ -50,6 +50,7 @@ function App() {
         <Router>
             <div className="app">
                 <Provider store={store}>
+
                     <Header/>
                     <SecondHeader/>
                     <Routes>

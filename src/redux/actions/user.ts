@@ -1,6 +1,5 @@
 import {
     SET_USER,
-    LOADING_UI,
     SET_ERRORS,
     CLEAR_ERRORS,
     LOADING_USER,
@@ -35,6 +34,9 @@ export const loginUser = (userData: IAuth, navigate:any) => async (dispatch: IDi
         .then((res) => {
             setAuthorizationToken(res.data.access);
             dispatch({type: CLEAR_ERRORS});
+            getUserData();
+        })
+        .then(() => {
             navigate('/products');
         })
         .catch((err) =>

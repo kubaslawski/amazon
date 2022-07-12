@@ -4,6 +4,7 @@ import "./products-page.scss";
 import {useParams} from "react-router-dom";
 // actions
 import {getAllProducts, getCategoryProducts} from "../../../redux/actions/products";
+import {getUserData} from "../../../redux/actions/user";
 // page components
 import ProductCard from "../../components/product/product-card/product-card";
 // interfaces
@@ -12,6 +13,7 @@ import {IDispatchInterface} from "../../../interfaces/global";
 import {IState} from "../../../redux/store";
 // HOC
 import isLoadingHOC, {IBaseLoadableComponent} from "../../HOC/IsLoadingHOC";
+
 
 interface IProductsPage extends IBaseLoadableComponent {
 
@@ -37,6 +39,15 @@ const ProductsPage: FunctionComponent<IProductsPage> = ({setLoading}) => {
         }
         fetchData();
     }, [dispatch, id]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            await dispatch(getUserData());
+            setLoading(false);
+        }
+        fetchData();
+    }, [])
 
     return (
         <div className="products-page row">
